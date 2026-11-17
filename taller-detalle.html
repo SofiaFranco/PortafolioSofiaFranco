@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<!--
+  Esta página tiene una sección por cada pieza del taller creativo.
+  El orden y los id="pieza-N" deben coincidir con los href="taller-detalle.html#pieza-N"
+  de las tarjetas en la sección "Taller creativo" de index.html.
+  Para agregar una pieza nueva: copia un bloque <section class="piece"> completo, cámbiale el id,
+  y agrega una tarjeta nueva en index.html que apunte a ese id.
+  Traducciones: todo texto con class="i18n" tiene su versión en inglés en data-en="...".
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sofía Franco — Taller creativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161210; --paper:#F3EDE4; --sage:#8A9A7E; --clay:#D9A9A0; --mustard:#C79A45; --signal:#C1442D;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; }
+
+  .topbar{
+    position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center;
+    padding:20px 40px; background:var(--paper); border-bottom:1px solid rgba(36,31,27,0.12);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;
+  }
+  .topbar a.back{ color:var(--signal); text-decoration:none; }
+  .topbar .wordmark{ opacity:0.6; }
+  .topbar .right{ display:flex; align-items:center; gap:18px; }
+
+  /* botón de idioma ES / EN */
+  .langtoggle{
+    display:flex; border:1px solid rgba(36,31,27,0.3); border-radius:20px; overflow:hidden;
+    font-size:11px; letter-spacing:0.05em;
+  }
+  .langtoggle button{
+    all:unset; cursor:pointer; padding:6px 12px; color:var(--ink); opacity:0.55;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .langtoggle button.active{ background:var(--signal); color:var(--paper); opacity:1; }
+  .piece{ scroll-margin-top:60px; }
+
+  /* estructura de cada pieza: kicker -> titulo -> parrafos -> collage de fotos */
+  .piece{
+    padding:70px 40px; max-width:900px; margin:0 auto;
+    border-bottom:1px solid rgba(36,31,27,0.12);
+  }
+  .piece:last-child{ border-bottom:none; }
+
+  .piece .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--signal); margin-bottom:10px;
+  }
+  .piece h2{ font-family:'Fraunces', serif; font-weight:500; font-style:italic; font-size:34px; margin-bottom:18px; max-width:620px; }
+  .piece p{ font-size:15.5px; line-height:1.75; opacity:0.85; margin-bottom:14px; max-width:620px; }
+  .piece .specs{ margin:20px 0 34px; display:flex; flex-wrap:wrap; gap:8px; }
+  .piece .specs span{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    border:1px solid rgba(36,31,27,0.3); padding:5px 10px; border-radius:20px; opacity:0.75;
+  }
+
+  /* EDITA AQUÍ: collage de fotos. Son 6 espacios -- reemplaza cada .ph por <img src="assets/tu-foto.jpg" ...>
+     manteniendo la misma clase "ph" para que conserve su tamaño y posición en el mosaico. */
+  .collage6{
+    display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:180px; gap:12px;
+  }
+  .collage6 .ph{
+    border-radius:6px; display:flex; align-items:flex-end; padding:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:rgba(36,31,27,0.55);
+  }
+  .collage6 .ph span{ background:rgba(243,237,228,0.82); padding:3px 7px; }
+  .collage6 .ph:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  .collage6 .ph:nth-child(2){ grid-column:span 2; }
+  .collage6 .ph:nth-child(3){ grid-column:span 1; }
+  .collage6 .ph:nth-child(4){ grid-column:span 1; }
+  .collage6 .ph:nth-child(5){ grid-column:span 2; }
+  .collage6 .ph:nth-child(6){ grid-column:span 2; }
+
+  @media (max-width:640px){
+    .collage6{ grid-template-columns:repeat(2, 1fr); }
+    .collage6 .ph:nth-child(1){ grid-column:span 2; grid-row:span 1; aspect-ratio:16/9; }
+    .collage6 .ph{ grid-column:span 1 !important; }
+  }
+
+  /* COLLAGE 12*/
+ .collage12{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:220px;
+  gap:12px;
+  }
+  .collage12 .ph{
+    border-radius:6px;
+    display:flex;
+    align-items:flex-end;
+    padding:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:rgba(36,31,27,0.55);
+  }
+  .collage12 .ph span{
+    background:rgba(243,237,228,0.82);
+    padding:3px 7px;
+  }
+  /* Distribución */
+  .collage12 .ph:nth-child(1){
+    grid-column:span 2;
+    grid-row:span 2;
+  }
+  .collage12 .ph:nth-child(2){
+    grid-column:span 2;
+  }
+  .collage12 .ph:nth-child(3){
+    grid-column:span 1;
+  }
+  .collage12 .ph:nth-child(4){
+    grid-column:span 1;
+  }
+  .collage12 .ph:nth-child(5){
+    grid-column:span 2;
+  }
+  .collage12 .ph:nth-child(6){
+    grid-column:span 2;
+  }
+  .collage12 .ph:nth-child(7){
+    grid-column:span 1;
+  }
+  .collage12 .ph:nth-child(8){
+    grid-column:span 1;
+  }
+  .collage12 .ph:nth-child(9){
+    grid-column:span 2;
+  }
+  .collage12 .ph:nth-child(10){
+    grid-column:span 2;
+  }
+  .collage12 .ph:nth-child(11){
+    grid-column:span 1;
+  }
+  .collage12 .ph:nth-child(12){
+    grid-column:span 1;
+  }
+  @media (max-width:640px){
+    .collage12{
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .collage12 .ph:nth-child(1){
+      grid-column:span 2;
+      grid-row:span 1;
+      aspect-ratio:16/9;
+    }
+    .collage12 .ph{
+      grid-column:span 1 !important;
+    }
+  }
+
+ /* COLLAGE 10*/
+ .collage10{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:220px;
+  gap:12px;
+  }
+
+  .collage10 .ph{
+    border-radius:6px;
+    display:flex;
+    align-items:flex-end;
+    padding:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:rgba(36,31,27,0.55);
+  }
+
+  .collage10 .ph span{
+    background:rgba(243,237,228,0.82);
+    padding:3px 7px;
+  }
+
+  .collage10 .ph:nth-child(1){
+    grid-column:span 2;
+    grid-row:span 2;
+  }
+
+  .collage10 .ph:nth-child(2){
+    grid-column:span 2;
+  }
+
+  .collage10 .ph:nth-child(3),
+  .collage10 .ph:nth-child(4){
+    grid-column:span 1;
+  }
+
+  .collage10 .ph:nth-child(5){
+    grid-column:span 2;
+  }
+
+  .collage10 .ph:nth-child(6){
+    grid-column:span 2;
+  }
+
+  .collage10 .ph:nth-child(7),
+  .collage10 .ph:nth-child(8){
+    grid-column:span 1;
+  }
+
+  .collage10 .ph:nth-child(9){
+    grid-column:span 2;
+  }
+
+  .collage10 .ph:nth-child(10){
+    grid-column:span 2;
+  }
+
+  @media (max-width:640px){
+
+    .collage10{
+      grid-template-columns:repeat(2, 1fr);
+    }
+
+    .collage10 .ph:nth-child(1){
+      grid-column:span 2;
+      grid-row:span 1;
+      aspect-ratio:16/9;
+    }
+
+    .collage10 .ph{
+      grid-column:span 1 !important;
+    }
+
+  }
+
+   /* COLLAGE 3*/
+  .collage3{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:220px;
+    gap:12px;
+  }
+
+  .collage3 .ph{
+    border-radius:6px;
+    display:flex;
+    align-items:flex-end;
+    padding:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:rgba(36,31,27,0.55);
+  }
+
+  .collage3 .ph span{
+    background:rgba(243,237,228,0.82);
+    padding:3px 7px;
+  }
+
+  .collage3 .ph:nth-child(1){
+    grid-column:span 2;
+    grid-row:span 2;
+  }
+
+  .collage3 .ph:nth-child(2){
+    grid-column:span 2;
+    grid-row:span 1;
+  }
+
+  .collage3 .ph:nth-child(3){
+    grid-column:span 2;
+    grid-row:span 1;
+  }
+
+  @media (max-width:640px){
+
+    .collage3{
+      grid-template-columns:repeat(2, 1fr);
+      grid-auto-rows:auto;
+    }
+
+    .collage3 .ph:nth-child(1){
+      grid-column:span 2;
+      grid-row:span 1;
+      aspect-ratio:16/9;
+    }
+
+    .collage3 .ph:nth-child(2),
+    .collage3 .ph:nth-child(3){
+      grid-column:span 1;
+    }
+
+  }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <!-- EDITA AQUÍ si cambias el nombre del archivo principal -->
+  <a class="back i18n" data-en="← Back to the workshop" href="portafolio-completo (1).html#taller">← Volver al taller</a>
+  <div class="right">
+    <div class="wordmark">Sofía Franco</div>
+    <div class="langtoggle">
+      <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- PIEZA 1 -->
+<section class="piece" id="pieza-1">
+  <div class="kicker i18n" data-en="Piece 01">Pieza 01</div>
+  <h2 class="i18n" data-en="3D printed TPU fabrics">Telas impresas en TPU</h2>
+  <p class="i18n" data-en="With these prints, I set out to explore TPU as a textile material, bringing together graphic design and digital fabrication. My process begins in Adobe Illustrator, where I design the pattern and export it as an SVG to bring into Fusion 360; there, I extrude it and add a border that gives it structure. Finally, in the slicer, I remove the top and bottom layers and experiment with different infill patterns and densities. Each combination produces a different texture, level of flexibility, and structure.">Con estas impresiones quise explorar el TPU como un material textil, uniendo el diseño gráfico con la fabricación digital. Mi proceso comienza en Adobe Illustrator, donde diseño el patrón y lo exporto como SVG para llevarlo a Fusion 360; ahí lo extruyo y le añado un borde que le da estructura. Finalmente, en el slicer elimino las capas superiores e inferiores y experimento con distintos patrones y densidades de relleno. Cada combinación da como resultado una textura, una flexibilidad y una estructura diferentes.</p>
+  <div class="specs">
+      <span>TPU</span>
+      <span>FDM</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC1-1.png') center/cover"></div>
+      <div class="ph" style="background:url('TC1-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC1-3.png') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 2 -->
+<section class="piece" id="pieza-2">
+  <div class="kicker i18n" data-en="Piece 02">Pieza 02</div>
+  <h2 class="i18n" data-en="Top with 3D printed elements and tulle base">Top impreso con tela tul de base</h2>
+  <p class="i18n" data-en="This top was born from an archaeology project I took part in at the lab, focused on the Lithic period of northern Peru. During the project, we scanned lithic pieces from Pampa Lechuza, such as arrowheads and scrapers, and their shapes inspired me to create a garment that connects digital fabrication with Peru's archaeological heritage. I designed the curved shapes in Adobe Illustrator and integrated them into a halter top pattern that I drafted to my own measurements.">Este top nació de un proyecto de arqueología en el que participé en el laboratorio, centrado en el período Lítico del norte del Perú. Durante el proyecto escaneamos piezas líticas de Pampa Lechuza, como puntas de flecha y raspadores, y sus formas me inspiraron a crear una prenda que conectara la fabricación digital con el patrimonio arqueológico peruano. Diseñé las formas curvas en Adobe Illustrator y las integré en un patrón de top tipo halter que desarrollé a mis propias medidas.</p>
+  <p class="i18n" data-en="For fabrication, I printed the pieces in gold Silk PLA to highlight their shapes with a glossy, almost metallic finish. For the neck tie and the back closures, I designed chains of individually printed links in PETG, a more resistant material that gives the garment greater durability.">Para la fabricación imprimí las piezas en PLA Silk dorado, buscando resaltar sus formas con un acabado brillante, casi metálico. Para el amarre del cuello y las uniones de la espalda diseñé cadenas de eslabones impresos individualmente en PETG, un material más resistente que le da mayor durabilidad a la prenda.</p>
+  <div class="specs">
+      <span class="i18n" data-en="PLA + tulle">PLA + tul</span>
+      <span>Elegoo Orangestorm Giga</span>
+      <span>2026</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC2\ -\ a.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ b.png') bottom/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ c.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 3 -->
+<section class="piece" id="pieza-3">
+  <div class="kicker i18n" data-en="Piece 03">Pieza 03</div>
+  <h2 class="i18n" data-en="Amigurumi">Amigurumi</h2>
+  <p class="i18n" data-en="I learned to crochet amigurumi in the summer of 2020 and discovered a whole new world: creating shapes and figures, stitch by stitch, from a single strand of yarn. I'm fascinated by how increases and decreases turn a flat piece into increasingly complex volumes, and how combining colors and textures opens up endless possibilities. So far I've focused mainly on dolls, but I'm eager to keep exploring what else I can build with crochet.">Aprendí a tejer amigurumi en el verano de 2020 y descubrí un mundo completamente nuevo: crear formas y figuras, punto a punto, a partir de un simple hilo. Me fascina cómo los aumentos y disminuciones permiten transformar una pieza plana en volúmenes cada vez más complejos, y cómo la combinación de colores y texturas abre infinitas posibilidades. Hasta ahora me he centrado principalmente en muñecos, pero tengo muchas ganas de seguir explorando qué más puedo construir con el crochet.</p>
+  <p class="i18n" data-en="Years later, when I discovered 3D printing, I found an unexpected connection between both worlds: in each, every shape is built layer by layer, whether with filament or with yarn. That similarity has inspired me to experiment with new forms and to bring ideas born from crochet into the realm of digital fabrication.">Años después, al conocer la impresión 3D, encontré una conexión inesperada entre ambos mundos: en los dos, cada forma se construye capa a capa, ya sea con filamento o con hilo. Esa similitud me ha inspirado a experimentar con nuevas formas y a llevar ideas que nacen del crochet al terreno de la fabricación digital.</p>
+  <div class="specs">
+      <span>Crochet</span>
+      <span class="i18n" data-en="Yarn">Lana</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage12">
+      <div class="ph" style="background:url('TC2\ -\ 1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 3.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 4.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 5.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 6.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 7.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 8.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 9.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 10.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 11.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 12.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 4 -->
+<section class="piece" id="pieza-4">
+  <div class="kicker i18n" data-en="Piece 04">Pieza 04</div>
+  <h2 class="i18n" data-en="3D printed bandana">Bandana impresa</h2>
+  <p class="i18n" data-en="This bandana started from a lace pattern I found online, which I edited in Adobe Illustrator to turn it into a printable structure. I then brought the design into Fusion 360, where I extruded it and divided it into square and triangular modules. I printed each module separately in TPU and joined them with superglue, combining the different shapes until I had built the final structure of the bandana.">Esta bandana partió de un patrón de encaje (lace) que encontré en internet y que edité en Adobe Illustrator para convertirlo en una estructura imprimible. Luego llevé el diseño a Fusion 360, donde lo extruí y lo dividí en módulos cuadrados y triangulares. Imprimí cada módulo por separado en TPU y los uní con pegamento instantáneo, combinando las distintas formas hasta construir la estructura final de la bandana.</p>
+  <div class="specs">
+      <span>TPU</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC4-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC4-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC4-3.png') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 5 -->
+<section class="piece" id="pieza-5">
+  <div class="kicker i18n" data-en="Piece 05">Pieza 05</div>
+  <h2 class="i18n" data-en="Hand-scan shelf">Estante de mano escaneada</h2>
+  <p class="i18n" data-en="This piece began with a 3D scan of my right hand, captured with a Creality Raptor Pro. I then cleaned up and post-processed the scan in Blender, refining the model to turn it into a functional object. Finally, I printed the hand in Silk PLA and designed a base that turned it into a stand for holding and displaying jewelry. The result brings together the digitization of a part of my own body with a decorative and practical use.">Esta pieza comenzó con el escaneo 3D de mi mano derecha, que realicé con un Creality Raptor Pro. Después limpié y postprocesé el escaneo en Blender, ajustando el modelo para convertirlo en un objeto funcional. Finalmente, imprimí la mano en PLA Silk y diseñé una base que la transformó en un estante para colocar y exhibir joyería. El resultado une la digitalización de una parte de mi propio cuerpo con un uso decorativo y práctico.</p>
+  <div class="specs">
+      <span class="i18n" data-en="3D scanning">Escaneo 3D</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC5-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC5-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC5-3.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 6 -->
+<section class="piece" id="pieza-6">
+  <div class="kicker i18n" data-en="Piece 06">Pieza 06</div>
+  <h2 class="i18n" data-en="3D printed PETG bag with crocheted joints">Cartera impresa en PETG y uniones tejidas</h2>
+  <p class="i18n" data-en="In this bag, I combined 3D printing in translucent PETG with crochet, which I used to join the panels together. For the panel design, I drew inspiration from the hextech shapes in the series Arcane. I first printed a test panel in clear PETG and, since I liked the result, reprinted it in translucent fuchsia PETG, which gave it a striking sense of depth.">En esta cartera combiné la impresión 3D en PETG translúcido con el crochet, que utilicé para unir los paneles entre sí. Para el diseño de los paneles me inspiré en las formas hextech de la serie Arcane. Primero imprimí un panel de prueba en PETG transparente y, como me gustó el resultado, lo volví a imprimir en PETG fucsia translúcido, que le dio un efecto de profundidad muy interesante.</p>
+  <p class="i18n" data-en="The bag is made up of three rectangular panels and six triangular side panels. I designed the edges of each panel with small circular holes so they could be crocheted, and worked the joins in thin black yarn, combining single and double crochet stitches. To finish, I added a black fabric lining and a pink chain that matches the fuchsia filament.">La cartera está formada por tres paneles rectangulares y seis triangulares en los laterales. Diseñé los bordes de cada panel con pequeños orificios circulares para poder tejerlos, y realicé las uniones en crochet con lana negra delgada, combinando puntos bajos y puntos altos. Para terminar, añadí un forro de tela negra en el interior y una cadena rosa que hace juego con el filamento fucsia.</p>
+  <div class="specs">
+      <span>PETG</span>
+      <span>Crochet</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC6 - 1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC6-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC6-3.png') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 7 -->
+<section class="piece" id="pieza-7">
+  <div class="kicker i18n" data-en="Piece 07">Pieza 07</div>
+  <h2 class="i18n" data-en="Upcycled jeans with granny squares">Jean intervenido con granny squares</h2>
+  <p class="i18n" data-en="One of my passions is upcycling: turning something unused into a new piece with a personality of its own. That's what I did with these jeans, which I had stopped wearing because I wasn't happy with the cut of the legs. I opened them up along the sides and added a strip of granny squares: small crocheted squares whose circular centers evoke flowers or suns. I chose to combine shades of blue with mustard to create contrast while still complementing the color of the denim.">Una de mis pasiones es el upcycling: transformar algo en desuso en una pieza nueva y con personalidad propia. Eso es lo que hice con este jean, que había dejado de usar porque no me convencía el corte de las piernas. Decidí abrirlo por los costados e incorporar una franja de granny squares: pequeños cuadrados tejidos en crochet que, gracias a su centro circular, evocan flores o soles. Elegí combinar tonos azules con mostaza para generar contraste y, a la vez, armonizar con el color del denim.</p>
+  <div class="specs">
+      <span>Crochet</span>
+      <span>Denim</span>
+      <span>Upcycling</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC7-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC7-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC7-3.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 8 -->
+<section class="piece" id="pieza-8">
+  <div class="kicker i18n" data-en="Piece 08">Pieza 08</div>
+  <h2 class="i18n" data-en="3D printed masks">Máscaras impresas en 3D</h2>
+  <p class="i18n" data-en="I'm very interested in cosplay, which led me to experiment with 3D printing masks and costume accessories. These pieces became my space for exploring different post-processing techniques: filling, sanding, and painting with acrylic and spray paint, with the goal of finding the best way to achieve high-quality finishes. I still have a lot to explore in this field, but so far the results have been very rewarding.">Me interesa mucho el cosplay, y eso me llevó a experimentar con la impresión 3D de máscaras y accesorios de disfraces. Estas piezas se convirtieron en mi espacio para explorar distintas técnicas de postprocesado: masillado, lijado y pintura acrílica y en spray, con el objetivo de encontrar la mejor manera de lograr acabados de calidad. Aún tengo mucho por experimentar en este campo, pero hasta ahora los resultados han sido muy satisfactorios.</p>
+  <div class="specs">
+      <span>PLA</span>
+      <span>Cosplay</span>
+      <span class="i18n" data-en="Post-processing">Postprocesado</span>
+      <span class="i18n" data-en="Video games">Videojuegos</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC8-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC8-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC8-3.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 9 -->
+<section class="piece" id="pieza-9">
+  <div class="kicker i18n" data-en="Piece 09">Pieza 09</div>
+  <h2 class="i18n" data-en="Crochet accessories">Accesorios tejidos en crochet</h2>
+  <p class="i18n" data-en="In these pieces, I combined crochet with accessory design, attaching metal chains to small crocheted figures. I chose floral and fruit shapes that caught my eye and worked them with a 2 mm hook in tight single crochet stitches, which allowed me to achieve firm, well-defined pieces despite their small size. For presentation, I mounted the accessories on a cardstock backing so they can be hung and displayed.">En estas piezas combiné el crochet con el diseño de accesorios, integrando cadenas metálicas a pequeñas figuras tejidas. Elegí formas florales y de frutas que me parecieron llamativas, y las tejí con un ganchillo de 2 mm usando puntos bajos bien ajustados, lo que me permitió lograr piezas firmes y bien definidas a pesar de su tamaño. Para la presentación, monté los accesorios sobre una base de cartulina que permite colgarlos y exhibirlos.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Accessories">Accesorios</span>
+      <span class="i18n" data-en="Earrings">Aretes</span>
+      <span>Crochet</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC10-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC10-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC10-3.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 10 -->
+<section class="piece" id="pieza-10">
+  <div class="kicker i18n" data-en="Piece 10">Pieza 10</div>
+  <h2 class="i18n" data-en="3D printed TPU vest">Chaleco impreso en 3D con TPU</h2>
+  <p class="i18n" data-en="This was my first 3D printed garment. I started by sketching a design based on my measurements to figure out how to create the pattern pieces. Since I was working with a Prusa MK3, whose print area is approximately 250 × 210 mm, every piece had to fit within that size.">Esta fue mi primera prenda impresa en 3D. Empecé haciendo un boceto con mis medidas para definir cómo generar los patrones. Como trabajaba con una impresora Prusa MK3, cuya área de impresión es de aproximadamente 250 × 210 mm, cada pieza debía ajustarse a ese tamaño.</p>
+  <p class="i18n" data-en="In Fusion 360, I designed the base pattern: ovals arranged in a circular layout that evokes flowers. I then placed it within rectangles and trapezoids sized to the print bed which, once joined, form the silhouette of the vest. Each piece has small holes along its edges, and to join them I designed half-cylinder connectors that work like buttons or hooks.">En Fusion 360 diseñé el patrón base: óvalos dispuestos en un patrón circular que evocan flores. Luego lo distribuí dentro de rectángulos y trapecios que entraran en la cama de impresión y que, al unirse, formaran la silueta del chaleco. Cada pieza tiene pequeños orificios en los bordes, y para unirlas diseñé unos conectores semicilíndricos que funcionan como botones o ganchos.</p>
+  <p class="i18n" data-en="I printed the vest in white TPU, a flexible filament. To achieve a cleaner finish, I adjusted the speed, temperature, and flow settings.">Imprimí el chaleco en TPU blanco, un filamento flexible. Para obtener un acabado más prolijo, ajusté los parámetros de velocidad, temperatura y flujo.</p>
+  <div class="specs">
+      <span>TPU</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+      <span>Fusion 360</span>
+      <span>Prusa MK3</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC11-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC11-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC11-3.png') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 11 -->
+<section class="piece" id="pieza-11">
+  <div class="kicker i18n" data-en="Piece 11">Pieza 11</div>
+  <h2 class="i18n" data-en="Biomedical sportswear and merchandise design">Diseño de camisetas deportivas y merch biomédico</h2>
+  <p class="i18n" data-en="In 2023 and 2024, I was part of the board of the Biomedical Engineering Student Association (AEIB) as Director of Publicity. In this volunteer role, I was in charge of managing the association's social media, especially Instagram and TikTok.">Durante 2023 y 2024 formé parte de la mesa directiva de la Asociación de Estudiantes de Ingeniería Biomédica (AEIB) como directora de publicidad. En este voluntariado estuve a cargo de la gestión de las redes sociales de la asociación, especialmente Instagram y TikTok.</p>
+  <p class="i18n" data-en="I was also responsible for designing apparel for our sports and recreational events. In total, I designed more than 10 garments, including t-shirts, sports jerseys, and hoodies. In each design, I sought to incorporate the association's color palette, which evolved over time; our mascot, Kai, a bionic kangaroo; and, above all, the essence of biomedical engineering.">Además, era la responsable de diseñar las prendas para los eventos deportivos y recreativos. En total diseñé más de 10 prendas, entre polos, camisetas y poleras. En cada diseño busqué integrar la paleta de colores de la asociación, que fue evolucionando con el tiempo; a nuestra mascota, Kai, un canguro biónico; y, sobre todo, la esencia de la ingeniería biomédica.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Graphic design">Diseño gráfico</span>
+      <span>Adobe Illustrator</span>
+      <span class="i18n" data-en="Social media">Redes sociales</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC9-1.png') center/cover"></div>
+      <div class="ph" style="background:url('TC9-6.png') center/cover"></div>
+      <div class="ph" style="background:url('TC9-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC9-5.png') center/cover"></div>
+      <div class="ph" style="background:url('TC9-3.tif') center/cover"></div>
+      <div class="ph" style="background:url('TC9-4.png') center/cover"></div>
+  </div>
+</section>
+
+<!-- PIEZA 12 -->
+<section class="piece" id="pieza-12">
+  <div class="kicker i18n" data-en="Piece 12">Pieza 12</div>
+  <h2 class="i18n" data-en="IEEE EMBS PUCP magazine coordination and design">Coordinación y diseño de revista IEEE EMBS PUCP</h2>
+  <p class="i18n" data-en="From 2022 to 2024, I was part of the IEEE EMBS PUCP student chapter as magazine coordinator. During that time, we published three editions of our annual magazine — two digital and one in print — as well as a monthly newsletter from 2023 to 2024.">De 2022 a 2024 formé parte del capítulo estudiantil IEEE EMBS PUCP como coordinadora de la revista. Durante ese periodo publicamos tres ediciones de la revista anual —dos virtuales y una impresa—, además de un boletín mensual entre 2023 y 2024.</p>
+  <p class="i18n" data-en="Beyond coordinating the team, I focused especially on design and editing: I designed more than 12 newsletters and laid out more than 10 magazine articles. This experience helped me strengthen my skills in Adobe Illustrator, Adobe InDesign, and Canva, while also developing my leadership and teamwork.">Además de organizar al equipo, me enfoqué especialmente en el diseño y la edición: diseñé más de 12 boletines y la diagramación de más de 10 artículos de la revista. Esta experiencia me permitió consolidar mis habilidades en Adobe Illustrator, Adobe InDesign y Canva, y al mismo tiempo desarrollar mi liderazgo y mi capacidad de trabajo en equipo.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Editorial design">Diseño editorial</span>
+      <span class="i18n" data-en="Graphic design">Diseño gráfico</span>
+      <span>Adobe InDesign</span>
+  </div>
+  <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
+  <div class="collage3">
+      <div class="ph" style="background:url('TC12-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC12-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC12-3.png') center/cover"></div>
+  </div>
+</section>
+
+<script>
+  /* Idioma: se guarda entre páginas (?lang=en en el enlace + localStorage) */
+  const titles = { es:'Sofía Franco — Taller creativo', en:'Sofía Franco — Creative workshop' };
+  document.querySelectorAll('.i18n').forEach(el=>{ el.dataset.es = el.innerHTML; });
+
+  function setLang(lang){
+    document.querySelectorAll('.i18n').forEach(el=>{
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.es;
+    });
+    document.documentElement.lang = lang;
+    document.title = titles[lang];
+    document.getElementById('btn-es').classList.toggle('active', lang==='es');
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    document.querySelectorAll('a[href*=".html"]').forEach(a=>{
+      const parts = a.getAttribute('href').split('#');
+      a.setAttribute('href', parts[0].split('?')[0] + '?lang=' + lang + (parts[1] ? '#' + parts[1] : ''));
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+
+  (function(){
+    let lang = new URLSearchParams(location.search).get('lang');
+    if(!lang){ try{ lang = localStorage.getItem('lang'); }catch(e){} }
+    if(lang === 'en' || lang === 'es') setLang(lang);
+  })();
+</script>
+</body>
+</html>

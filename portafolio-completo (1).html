@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<!--
+  GUÍA RÁPIDA DE EDICIÓN
+  - Colores: busca ":root" en el <style> — cambia ahí y se actualiza todo el sitio.
+  - Cada sección del sitio está separada por comentarios tipo "============ NOMBRE ============".
+  - Dentro de cada sección busca los comentarios "EDITA AQUÍ" — marcan lo que debes reemplazar.
+  - Traducciones: cualquier texto con class="i18n" tiene un atributo data-en="..." con su versión en inglés.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sofia Franco — Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161210;
+    --paper:#F3EDE4;
+    --sage:#8A9A7E;
+    --clay:#D9A9A0;
+    --mustard:#C79A45;
+    --signal:#C1442D;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; overflow-x:hidden; }
+
+  /* ============ HERO ============ */
+  .stage{ position:relative; width:100%; background:var(--ink); }
+  .stars{ position:absolute; inset:0; }
+  .star{ position:absolute; color:rgba(243,237,228,0.5); }
+
+  .langtoggle{
+    position:fixed; top:24px; right:24px; z-index:20; display:flex;
+    border:1px solid rgba(36,31,27,0.3); border-radius:20px; overflow:hidden;
+    font-size:11px; letter-spacing:0.05em; background:rgba(243,237,228,0.85);
+  }
+  .langtoggle button{
+    all:unset; cursor:pointer; padding:7px 13px; color:var(--ink); opacity:0.55;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .langtoggle button.active{ background:var(--signal); color:var(--paper); opacity:1; }
+
+  .tabs{
+    position:relative; z-index:6; display:flex; justify-content:center; gap:6px;
+    flex-wrap:wrap; padding:26px 20px 6px;
+  }
+  .tab{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;
+    color:rgba(243,237,228,0.6); padding:9px 16px; border:1px solid rgba(243,237,228,0.18);
+    border-radius:20px; text-decoration:none; white-space:nowrap; cursor:pointer;
+  }
+  .tab.active{ background:var(--signal); border-color:var(--signal); color:var(--paper); }
+
+  .brandrow{
+    position:relative; z-index:6; display:flex; justify-content:space-between;
+    padding:14px 40px 0; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
+  }
+  .brandrow .left{ color:var(--sage); }
+  .brandrow .right{ color:var(--paper); opacity:0.75; }
+
+  .illustration{ position:relative; max-width:900px; margin:0px auto 0; z-index:5; }
+  .illustration svg{ width:100%; height:auto; display:block; }
+
+  .tagline{
+    position:relative; z-index:5; text-align:center; margin-top:0; padding-bottom:40px;
+    font-family:'Caveat', cursive; color:var(--mustard); font-size:26px;
+  }
+
+  /* ============ shared section styles ============ */
+  section{ padding:90px 40px; }
+  .wrap{ max-width:1080px; margin:0 auto; }
+  .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--signal); margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .kicker::before{ content:''; width:22px; height:1px; background:var(--signal); }
+  h2.section-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(30px,4vw,44px); margin-bottom:36px;}
+
+  /* ============ ¿Quién soy? ============ */
+  #quien-soy{ background:var(--paper); }
+  .who-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center; }
+  .photo-slot{
+    aspect-ratio:4/5; border-radius:6px; position:relative; overflow:hidden;
+    background:linear-gradient(155deg,var(--clay),var(--mustard) 55%, var(--sage));
+    display:flex; align-items:flex-end; padding:18px;
+  }
+  .photo-slot img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+  }
+  .photo-slot span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(36,31,27,0.65);
+    background:rgba(243,237,228,0.75); padding:4px 9px;
+  }
+  .who-text p{ font-size:16.5px; line-height:1.75; margin-bottom:18px; opacity:0.88; max-width:520px; }
+  .tagbar{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+  .tagbar span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.04em; border:1px solid rgba(36,31,27,0.3); padding:6px 12px; border-radius:20px; opacity:0.75;
+  }
+
+  /* ============ Investigación ============ */
+  #investigacion{ background:#ece2cf; }
+  .paper-list{ display:flex; flex-direction:column; }
+  .paper{
+    padding:26px 0; border-top:1px solid rgba(36,31,27,0.16);
+    display:grid; grid-template-columns:110px 1fr; gap:22px;
+  }
+  .paper:first-of-type{ border-top:none; }
+  .paper .year{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--signal); }
+  .paper h3{ font-family:'Fraunces', serif; font-weight:500; font-size:20px; margin-bottom:8px; }
+  .paper .link{ font-family:'Fraunces', serif; font-weight:250; font-size:16px; color:var(--signal); margin-bottom:8px; }
+  .paper p{ font-size:14.5px; line-height:1.6; opacity:0.75; max-width:640px; }
+  .paper .venue{ font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:0.55; text-transform:uppercase; margin-top:8px; display:inline-block; }
+  /* proyectos técnicos: toda la fila es un enlace a proyectos-detalle.html */
+  a.paper.tech{ color:inherit; text-decoration:none; transition:background .2s; border-radius:4px; }
+  a.paper.tech:hover{ background:rgba(193,68,45,0.06); }
+  a.paper.tech:hover h3{ color:var(--signal); }
+  .paper .more{ display:block; margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--signal); }
+
+  /* ============ Taller creativo ============ */
+  #taller{ background:var(--paper); }
+  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .gitem{ position:relative; }
+  .gitem .thumb{
+    aspect-ratio:1/1; border-radius:6px;
+    display:flex; align-items:flex-end; padding:14px;
+  }
+  .gitem .thumb span{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:rgba(36,31,27,0.6);
+    background:rgba(243,237,228,0.8); padding:3px 8px;
+  }
+  .gitem h4{ font-family:'Fraunces', serif; font-style:italic; font-weight:400; font-size:16px; margin-top:12px; }
+  .gitem .mat{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; opacity:0.55; text-transform:uppercase; margin-top:2px; }
+
+  /* ============ Habilidades (NUEVA SECCIÓN) ============ */
+  #habilidades{ background:var(--paper); }
+  .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:22px; margin-bottom:50px; }
+  .skill-card{
+    background:#fff9ee; border:1px solid rgba(36,31,27,0.12); border-radius:8px;
+    padding:22px 22px 24px; border-top:4px solid var(--signal); /* <- cambia este color por categoría si quieres */
+  }
+  .skill-card h4{ font-family:'Fraunces', serif; font-weight:500; font-size:18px; margin-bottom:12px; }
+  .skill-pills{ display:flex; flex-wrap:wrap; gap:7px; }
+  .skill-pills span{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.03em; background:var(--paper); border:1px solid rgba(36,31,27,0.2);
+    padding:5px 10px; border-radius:20px;
+  }
+  .soft-skills{ }
+  .soft-skills h3{ font-family:'Fraunces', serif; font-style:italic; font-weight:400; font-size:20px; margin-bottom:16px; }
+  .soft-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .soft-row span{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.04em; background:var(--ink); color:var(--paper);
+    padding:9px 16px; border-radius:20px;
+  }
+
+  /* ============ Conferencias y premios ============ */
+  #conferencias{ background:#ece2cf; }
+  .timeline{ position:relative; padding-left:26px; border-left:2px solid rgba(36,31,27,0.18); }
+  .tl-item{ position:relative; padding-bottom:34px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:''; position:absolute; left:-32px; top:4px; width:11px; height:11px;
+    border-radius:50%; background:var(--signal); border:2px solid var(--paper);
+  }
+  .tl-item .yr{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--signal); }
+  .tl-item h4{ font-family:'Fraunces', serif; font-weight:500; font-size:18px; margin:4px 0 2px; }
+  .tl-item .kind{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; opacity:0.55; text-transform:uppercase; }
+
+  /* ============ Contacto ============ */
+  #contacto{ background:var(--ink); color:var(--paper); text-align:center; }
+  #contacto .kicker{ justify-content:center; }
+  #contacto h2{ color:var(--paper); }
+  #contacto p{ max-width:480px; margin:0 auto 30px; opacity:0.8; line-height:1.7; }
+  .contact-email{
+    font-family:'Fraunces', serif; font-style:italic; font-size:clamp(26px,4vw,40px);
+    color:var(--mustard); text-decoration:none; display:inline-block; margin-bottom:34px;
+  }
+  .social-row{ display:flex; justify-content:center; gap:16px; }
+  .social-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--paper); border:1px solid rgba(243,237,228,0.35);
+    padding:10px 18px; border-radius:20px; text-decoration:none;
+  }
+  footer{ text-align:center; padding:26px; font-family:'IBM Plex Mono', monospace; font-size:10.5px; opacity:0.4; background:var(--ink); color:var(--paper);}
+
+  @media (max-width:760px){
+    .who-grid{ grid-template-columns:1fr; }
+    .paper{ grid-template-columns:1fr; }
+    .gallery{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="langtoggle">
+  <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="stage">
+  <div class="stars" id="stars"></div>
+
+  <nav class="tabs">
+    <a class="tab i18n" data-en="Who am I?" href="#quien-soy">¿Quién soy?</a>
+    <a class="tab i18n" data-en="Research projects" href="#investigacion">Proyectos de investigación</a>
+    <a class="tab i18n" data-en="Creative workshop" href="#taller">Taller creativo</a>
+    <!-- pestaña nueva: apunta a la sección id="habilidades" de más abajo -->
+    <a class="tab i18n" data-en="Skills" href="#habilidades">Habilidades</a>
+    <a class="tab i18n" data-en="Talks &amp; awards" href="#conferencias">Conferencias y premios</a>
+    <a class="tab i18n" data-en="Contact" href="#contacto">Contacto</a>
+  </nav>
+  <div class="brandrow">
+    <div class="left i18n" data-en="Selected work">Trabajo seleccionado</div>
+    <div class="right i18n" data-en="Sofía Franco | Biomedical engineering · Creative workshop">Sofía Franco | Ingeniería biomédica · Taller creativo</div>
+  </div>
+
+  <div class="illustration">
+    <svg viewBox="0 0 1180 620" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke-linecap="round">
+        <path d="M110,120 C 220,60 300,180 380,140 C 470,95 520,40 610,70 C 700,40 760,95 850,60 C 930,30 990,80 1070,110" stroke="var(--sage)" stroke-width="9" opacity="0.85"/>
+        <path d="M140,560 C 240,520 300,590 400,555 C 500,520 560,585 660,548 C 760,510 820,570 920,540 C 990,520 1030,555 1080,535" stroke="var(--clay)" stroke-width="9" opacity="0.85"/>
+        <path d="M60,340 C 140,300 180,380 260,345 C 330,315 340,260 420,290" stroke="var(--mustard)" stroke-width="8" opacity="0.8"/>
+        <path d="M900,300 C 970,270 1010,340 1080,310 C 1120,295 1130,260 1160,270" stroke="var(--mustard)" stroke-width="8" opacity="0.8"/>
+      </g>
+      <g>
+        <circle cx="110" cy="120" r="17" fill="var(--signal)"/><circle cx="110" cy="120" r="9" fill="var(--clay)"/>
+        <circle cx="1070" cy="110" r="15" fill="var(--mustard)"/><circle cx="1070" cy="110" r="7" fill="var(--paper)" opacity="0.7"/>
+        <circle cx="1080" cy="535" r="16" fill="var(--sage)"/><circle cx="1080" cy="535" r="8" fill="var(--paper)" opacity="0.7"/>
+        <circle cx="140" cy="560" r="15" fill="var(--signal)"/><circle cx="140" cy="560" r="7" fill="var(--mustard)"/>
+      </g>
+      <g transform="translate(870,235)">
+        <circle cx="0" cy="0" r="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+        <circle cx="-14" cy="-4" r="7" fill="var(--ink)"/><circle cx="14" cy="-4" r="7" fill="var(--ink)"/>
+        <circle cx="-14" cy="-6" r="2.4" fill="var(--paper)"/><circle cx="14" cy="-6" r="2.4" fill="var(--paper)"/>
+        <path d="M-10,16 Q0,24 10,16" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M-46,-6 Q-58,-20 -46,-32" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M46,-6 Q58,-20 46,-32" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(950,470)">
+        <rect x="-26" y="-18" width="52" height="46" rx="18" fill="var(--signal)"/>
+        <circle cx="-9" cy="-2" r="6" fill="var(--ink)"/><circle cx="9" cy="-2" r="6" fill="var(--ink)"/>
+        <circle cx="-9" cy="-4" r="2" fill="var(--paper)"/><circle cx="9" cy="-4" r="2" fill="var(--paper)"/>
+        <rect x="-30" y="24" width="60" height="20" rx="8" fill="var(--mustard)"/>
+      </g>
+      <g fill="var(--mustard)"><path d="M330,205 l6,16 l16,6 l-16,6 l-6,16 l-6,-16 l-16,-6 l16,-6 z" opacity="0.9"/></g>
+      <g fill="var(--clay)"><path d="M600,230 l5,13 l13,5 l-13,5 l-5,13 l-5,-13 l-13,-5 l13,-5 z" opacity="0.9"/></g>
+      <g fill="var(--sage)"><path d="M770,400 l4,11 l11,4 l-11,4 l-4,11 l-4,-11 l-11,-4 l11,-4 z" opacity="0.85"/></g>
+      <g fill="var(--signal)"><path d="M200,430 l5,13 l13,5 l-13,5 l-5,13 l-5,-13 l-13,-5 l13,-5 z" opacity="0.9"/></g>
+      <defs>
+        <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="2" seed="4" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <text x="590" y="325" text-anchor="middle" filter="url(#rough)" font-family="'Alfa Slab One', serif" font-size="150" fill="var(--paper)" stroke="var(--ink)" stroke-width="2">SOFÍA</text>
+      <text x="590" y="495" text-anchor="middle" filter="url(#rough)" font-family="'Alfa Slab One', serif" font-size="122" fill="var(--paper)" stroke="var(--ink)" stroke-width="2">FRANCO</text>
+    </svg>
+  </div>
+  <div class="tagline i18n" data-en="portfolio · 2026">portafolio · 2026</div>
+</div>
+
+<!-- ============ ¿QUIÉN SOY? ============ -->
+<section id="quien-soy">
+  <div class="wrap">
+    <div class="kicker i18n" data-en="01 — Who am I?">01 — ¿Quién soy?</div>
+    <h2 class="section-title i18n" data-en="Designing at the intersection of science and creativity.">Diseñando en la intersección entre ciencia y creatividad.</h2>
+    <div class="who-grid">
+      <!-- EDITA AQUÍ: foto personal -->
+      <div class="photo-slot">
+        <img src="foto2025.jpg" alt="Foto de Sofía">
+      </div>
+
+<div class="who-text">
+        <!-- EDITA AQUÍ: tus dos párrafos de descripción -->
+        <p class="i18n" data-en="I hold a Bachelor's degree in Biomedical Engineering from PUCP - UPCH in Perú, with experience in research, design, and digital fabrication applied to the development of medical devices and customized solutions. I am particularly interested in exploring how design can make technology more functional, intuitive, and human-centered.">Soy bachiller en Ingeniería Biomédica por la PUCP - UPCH en Perú, con experiencia en investigación, diseño y fabricación digital aplicada al desarrollo de dispositivos médicos y soluciones personalizadas. Me interesa especialmente explorar cómo el diseño puede hacer que la tecnología sea más funcional, intuitiva y cercana a las personas.</p>
+        <p class="i18n" data-en="But my way of creating does not begin or end with engineering. I also find in design and traditional craftsmanship another way to experiment with shapes, materials, and textures. This portfolio brings both worlds together: what I build through science and what I create through curiosity.">Pero mi forma de crear no empieza ni termina en la ingeniería. También encuentro en el diseño y la fabricación tradicional otra manera de experimentar con formas, materiales y texturas. Este portafolio reúne ambos mundos: lo que construyo desde la ciencia y lo que creo desde la curiosidad.</p>
+        <div class="tagbar">
+          <span class="i18n" data-en="Biomedical engineering">Ingeniería biomédica</span>
+          <span class="i18n" data-en="Digital fabrication">Fabricación digital</span>
+          <span class="i18n" data-en="Crochet">Crochet</span>
+          <span class="i18n" data-en="3D printing">Impresión 3D</span>
+          <span class="i18n" data-en="3D printing">Biomecánica</span>
+          <span class="i18n" data-en="3D printing">Biomateriales</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVESTIGACIÓN ============ -->
+<section id="investigacion">
+  <div class="wrap">
+    <div class="kicker i18n" data-en="02 — Research">02 — Investigación</div>
+    <h2 class="section-title i18n" data-en="Published papers.">Papers publicados.</h2>
+    <!-- EDITA AQUÍ: cada .paper es un trabajo publicado. Copia un bloque completo para agregar uno nuevo. -->
+    <div class="paper-list">
+      <div class="paper">
+        <div class="year">2024</div>
+        <div>
+          <h3 class="i18n" data-en="Design and Manufacture of a 3D-Printed Exoskeleton for Hand Rehabilitation in Osteoarthritis.">Design and Manufacture of a 3D-Printed Exoskeleton for Hand Rehabilitation in Osteoarthritis.</h3>
+          <p class="i18n" data-en="This project proposes a lightweight, flexible, and affordable 3D-printed hand exoskeleton to support at-home physiotherapy for women over 65 with grade II osteoarthritis. The device combines flexible 3D-printed actuators, a cable-driven mechanism, and electronic control using a flex sensor, microcontroller, and servomotor to assist hand movement.">Este proyecto propone un exoesqueleto de mano ligero, flexible y económico, fabricado mediante impresión 3D, para apoyar la fisioterapia en casa de mujeres mayores de 65 años con osteoartritis de grado II. El dispositivo combina actuadores flexibles impresos en 3D, un mecanismo de cables y un sistema de control electrónico mediante un sensor flex, microcontrolador y servomotor para asistir el movimiento de la mano.</p>
+          <span class="link">https://ieeexplore.ieee.org/document/10755672</span></p>
+          <span class="venue">IEEE Andescon - Cusco, Perú</span>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="year">2023</div>
+        <div>
+          <h3 class="i18n" data-en="Design, Manufacturing and Mechanical Evaluation of a 3D-Printed Customized Wrist–Hand Orthosis for the Treatment of De Quervain Tenosynovitis">Design, Manufacturing and Mechanical Evaluation of a 3D-Printed Customized Wrist–Hand Orthosis for the Treatment of De Quervain Tenosynovitis</h3>
+          <p class="i18n" data-en="This project develops a customized 3D-printed wrist-hand orthosis for treating De Quervain’s tenosynovitis, aiming to improve fit and personalization compared with conventional orthoses. The device was successfully fabricated in a short time, with material characterization and mechanical testing confirming its fit and structural performance in different positions.">Este proyecto desarrolla una órtesis de muñeca y mano personalizada mediante impresión 3D para el tratamiento de la tenosinovitis de De Quervain, buscando mejorar el ajuste y la personalización frente a las órtesis convencionales. El dispositivo fue fabricado exitosamente en poco tiempo, realizando pruebas de caracterización del material y ensayos mecánicos para evaluar su ajuste y resistencia en diferentes posiciones.</p>
+          <span class="link">https://www.mdpi.com/2673-4591/83/1/2</span></p>
+          <span class="venue">CITIIC - Lima, Perú</span>
+        </div>
+      </div>
+    </div>
+
+
+  <h2 class="section-title i18n" data-en="Technical projects.">Proyectos técnicos.</h2>
+  <!-- EDITA AQUÍ: cada proyecto técnico es un enlace a su sección en proyectos-detalle.html (id="proyecto-N") -->
+      <!-- Digitalización de Huaca Huantille -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-1">
+    <div class="year">2025</div>
+    <div>
+      <h3 class="i18n" data-en="Digital Documentation and 3D Reconstruction of Huaca Huantille">
+        Digitalización y reconstrucción 3D de la Huaca Huantille
+      </h3>
+      <p class="i18n" data-en="This project aimed to contribute to the preservation and accessibility of cultural heritage through the 3D digitization of Huaca Huantille and artifacts from the Ichma culture. Drone-based photogrammetry and handheld 3D scanning were used to process, reconstruct, and 3D print the models, enabling visually impaired individuals to physically interact with replicas of the artifacts.">
+        Este proyecto buscó contribuir a la conservación y accesibilidad del patrimonio cultural mediante la digitalización 3D de la Huaca Huantille y piezas de la cultura Ichma. Se empleó fotogrametría con dron y escaneo 3D manual para procesar, reconstruir e imprimir los modelos, permitiendo que personas con discapacidad visual pudieran interactuar físicamente con réplicas de los objetos.
+      </p>
+      <span class="venue i18n" data-en="Cultural heritage & 3D digitization">
+        Patrimonio cultural y digitalización 3D
+      </span>
+      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+    </div>
+  </a>
+
+
+  <!-- Carcasa para peluche interactivo -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-2">
+    <div class="year">2025</div>
+    <div>
+      <h3 class="i18n" data-en="Design and 3D Printing of an Interactive Audio Module for Educational Plush Toys">
+        Diseño e impresión 3D de un módulo de audio interactivo para peluche educativo
+      </h3>
+      <p class="i18n" data-en="A compact enclosure was designed in Fusion 360 to integrate an electronic system capable of playing jungle animal sounds when a button is pressed. The component is intended to be incorporated into an educational plush toy, creating an interactive tool to introduce children to Peru's biodiversity.">
+        Se diseñó en Fusion 360 una carcasa compacta para integrar un sistema electrónico capaz de reproducir sonidos de animales de la selva al presionar un botón. La pieza será incorporada en un peluche educativo, creando una herramienta interactiva para acercar a los niños a la biodiversidad del Perú.
+      </p>
+      <span class="venue i18n" data-en="Product design & additive manufacturing">
+        Diseño de producto y fabricación aditiva
+      </span>
+      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+    </div>
+  </a>
+
+
+  <!-- Prótesis mioeléctrica -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-3">
+    <div class="year">2024</div>
+    <div>
+      <h3 class="i18n" data-en="Assembly and Testing of 3D-Printed Transradial Myoelectric Prostheses">
+        Ensamblaje y pruebas de prótesis transradiales mioeléctricas impresas en 3D
+      </h3>
+      <p class="i18n" data-en="This project involved supporting the assembly and evaluation of 3D-printed transradial myoelectric prostheses. Tasks included component preparation, device assembly, and assistance during user testing to evaluate the prostheses' functionality and fit.">
+        Se brindó apoyo en el ensamblaje y evaluación de prótesis transradiales mioeléctricas fabricadas mediante impresión 3D. Las actividades incluyeron la preparación de componentes, ensamblaje del dispositivo y apoyo durante las pruebas con usuarios para evaluar su funcionamiento y ajuste.
+      </p>
+      <span class="venue i18n" data-en="Myoelectric prosthetics">
+        Prótesis mioeléctricas
+      </span>
+      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+    </div>
+  </a>
+
+
+  <!-- Segmentación de tomografías -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-4">
+    <div class="year">2024</div>
+    <div>
+      <h3 class="i18n" data-en="3D Segmentation of Computed Tomography Images for Surgical Planning">
+        Segmentación 3D de tomografías computarizadas para planificación quirúrgica
+      </h3>
+      <p class="i18n" data-en="Three-dimensional segmentation of computed tomography images was performed to generate digital anatomical models. The resulting models were prepared for 3D printing, providing physical representations that can support anatomical analysis and surgical planning.">
+        Se realizó la segmentación tridimensional de imágenes obtenidas mediante tomografía computarizada para generar modelos anatómicos digitales. Los modelos fueron preparados para impresión 3D, proporcionando representaciones físicas para el análisis anatómico y la planificación quirúrgica.
+      </p>
+      <span class="venue i18n" data-en="Medical imaging & 3D modeling">
+        Imágenes médicas y modelado 3D
+      </span>
+      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+    </div>
+  </a>
+
+
+  <!-- Bomba de infusión -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-5">
+    <div class="year">2024</div>
+    <div>
+      <h3 class="i18n" data-en="Design and Prototyping of a Syringe Infusion Pump Enclosure">
+        Diseño y prototipado de carcasa para bomba de infusión de jeringa
+      </h3>
+      <p class="i18n" data-en="A CAD enclosure was designed for a syringe infusion pump, considering size and weight constraints to achieve a compact and easily reproducible device. The design was developed with additive manufacturing in mind, enabling rapid prototyping and iteration through 3D printing.">
+        Se diseñó en CAD la carcasa de una bomba de infusión de jeringa, considerando restricciones de tamaño y peso para obtener un dispositivo compacto y fácilmente reproducible. El diseño fue desarrollado para fabricación aditiva, permitiendo un prototipado e iteración rápidos mediante impresión 3D.
+      </p>
+      <span class="venue i18n" data-en="Medical device design & prototyping">
+        Diseño y prototipado de dispositivos médicos
+      </span>
+      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+    </div>
+  </a>
+
+
+  <!-- Protocolos de impresión 3D -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-6">
+    <div class="year">2023–2024</div>
+    <div>
+      <h3 class="i18n" data-en="Development of 3D Printing Protocols for Dental Models">
+        Desarrollo de protocolos de impresión 3D para modelos dentales
+      </h3>
+      <p class="i18n" data-en="3D resin printing protocols were developed for the production of anatomical models for educational and dental applications. The work included calibration of the laboratory's 3D printers, optimization of printing parameters, and development of reproducible manufacturing protocols.">
+        Se desarrollaron protocolos de fabricación mediante impresión 3D en resina para la producción de modelos anatómicos destinados a aplicaciones educativas y odontológicas. El trabajo incluyó la calibración de las impresoras 3D del laboratorio, la optimización de parámetros de impresión y el desarrollo de protocolos de fabricación reproducibles.
+      </p>
+      <span class="venue i18n" data-en="Dental 3D printing & manufacturing">
+        Impresión 3D y fabricación de modelos dentales
+      </span>
+      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+    </div>
+  </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALLER CREATIVO ============ -->
+<section id="taller">
+  <div class="wrap">
+    <div class="kicker i18n" data-en="03 — Creative workshop">03 — Taller creativo</div>
+    <h2 class="section-title i18n" data-en="Experiments in yarn, PLA, and generative form.">Experimentos en lana, PLA y forma generativa.</h2>
+    <!-- EDITA AQUÍ: cada .gitem es una pieza. Cambia el background del .thumb por tu imagen real: style="background:url('assets/tu-foto.jpg') center/cover" -->
+    <div class="gallery">
+      <a class="gitem" href="taller-detalle.html#pieza-1">
+        <div class="thumb" style="background:url('TC1-2.png') center/cover">
+          <span class="i18n" data-en="3D printed TPU fabrics">Telas impresas en TPU</span>
+        </div>
+        <h4 class="i18n" data-en="3D printed TPU fabrics">Telas impresas en TPU</h4>
+        <div class="mat i18n" data-en="TPU">TPU</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-2">
+        <div class="thumb" style="background:url('top.jpeg') center/cover">
+          <span class="i18n" data-en="Top with 3D printed elements and tulle base">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="Top with 3D printed elements and tulle base">Top impreso con tela tul de base</h4>
+        <div class="mat i18n" data-en="PLA + tulle">PLA + tul</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-3">
+        <div class="thumb" style="background:url('amigurumi.jpeg') center/cover">
+          <span class="i18n" data-en="Amigurumi">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="Amigurumi">Amigurumi</h4>
+        <div class="mat i18n" data-en="Crochet">Crochet</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-4">
+        <div class="thumb" style="background:url('TC4-1.jpeg') center/cover">
+          <span class="i18n" data-en="3D printed bandana">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="3D printed bandana">Bandana impresa</h4>
+        <div class="mat i18n" data-en="Flexible material">Material flexible</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-5">
+        <div class="thumb" style="background:url('TC5-1.jpeg') center/cover">
+          <span class="i18n" data-en="Hand-scan shelf">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="Hand-scan shelf">Estante de mano escaneada</h4>
+        <div class="mat i18n" data-en="3D scanning + 3D printing">Escaneo 3D + impresión 3D</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-6">
+        <div class="thumb" style="background:linear-gradient(155deg,var(--sage),var(--mustard))">
+          <span class="i18n" data-en="3D printed PETG bag with crocheted joints">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="3D printed PETG bag with crocheted joints">Cartera impresa en PETG y uniones tejidas</h4>
+        <div class="mat i18n" data-en="PETG + crochet">PETG + crochet</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-7">
+        <div class="thumb" style="background:url('TC7-1.jpeg') center/cover">
+          <span class="i18n" data-en="Upcycled jeans with granny squares">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="Upcycled jeans with granny squares">Jean intervenido con granny squares</h4>
+        <div class="mat i18n" data-en="Crochet + denim">Crochet + denim</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-8">
+        <div class="thumb" style="background:url('mascara.jpeg') center/cover">
+          <span class="i18n" data-en="3D printed masks">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="3D printed masks">Máscaras impresas en 3D</h4>
+        <div class="mat i18n" data-en="3D printed plastic">Plástico impreso en 3D</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-9">
+        <div class="thumb" style="background:url('TC10-2.jpeg') center/cover">
+          <span class="i18n" data-en="Crochet accessories">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="Crochet accessories">Accesorios tejidos en crochet</h4>
+        <div class="mat i18n" data-en="Crochet">Crochet</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-10">
+        <div class="thumb" style="background:url('TC11-1.jpeg') center/cover">
+          <span class="i18n" data-en="3D printed TPU vest">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="3D printed TPU vest">Chaleco impreso en 3D con TPU</h4>
+        <div class="mat i18n" data-en="TPU">TPU</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-11">
+        <div class="thumb" style="background:url('sdi.jpeg') center/cover">
+          <span class="i18n" data-en="Biomedical sportswear and merchandise design">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="Biomedical sportswear and merchandise design">Diseño de camisetas deportivas y merch biomédico</h4>
+        <div class="mat i18n" data-en="Graphic design">Diseño gráfico</div>
+      </a>
+
+      <a class="gitem" href="taller-detalle.html#pieza-12">
+        <div class="thumb" style="background:url('revista.jpeg') center/cover">
+          <span class="i18n" data-en="IEEE EMBS PUCP magazine coordination and design">imagen</span>
+        </div>
+        <h4 class="i18n" data-en="IEEE EMBS PUCP magazine coordination and design">Coordinación y diseño de revista IEEE EMBS PUCP</h4>
+        <div class="mat i18n" data-en="Editorial + graphic design">Diseño editorial + gráfico</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABILIDADES (sección nueva) ============ -->
+<section id="habilidades">
+  <div class="wrap">
+    <div class="kicker i18n" data-en="— Skills">— Habilidades</div>
+    <h2 class="section-title i18n" data-en="Tools and methods I work with.">Herramientas y métodos con los que trabajo.</h2>
+
+    <!--
+      TARJETAS DE HABILIDADES TÉCNICAS
+      Cada .skill-card es una categoría. Para agregar una categoría nueva,
+      copia un bloque .skill-card completo (desde <div class="skill-card"> hasta su </div> de cierre) y pégalo.
+      Para agregar/quitar una herramienta dentro de una categoría, agrega o borra un <span>...</span> dentro de .skill-pills.
+    -->
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h4 class="i18n" data-en="3D Design">Diseño 3D</h4>
+        <div class="skill-pills">
+          <span>Fusion 360</span>
+          <span>Inventor</span>
+          <span>Meshmixer</span>
+          <span>Blender</span>
+          <span>Tinkercad</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4 class="i18n" data-en="Manufacturing">Fabricación</h4>
+        <div class="skill-pills">
+          <span>FDM</span>
+          <span>SLA</span>
+          <span>Creality</span>
+          <span>Artillery</span>
+          <span>Bambu Lab</span>
+          <span>Prusa</span>
+          <span>Elegoo</span>
+          <span>Flashforge</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4 class="i18n" data-en="Materials">Materiales</h4>
+        <div class="skill-pills">
+          <span>TPU</span>
+          <span>PLA</span>
+          <span>PETG</span>
+          <span>ABS</span>
+          <span class="i18n" data-en="Resin">Resina</span>
+          <span class="i18n" data-en="Silicon">Silicona</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4 class="i18n" data-en="Programming">Programación</h4>
+        <div class="skill-pills">
+          <span>Python</span>
+          <span>C++</span>
+          <span>Arduino</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4 class="i18n" data-en="Simulation / analysis">Simulación / análisis</h4>
+        <div class="skill-pills">
+          <span>COMSOL</span>
+          <span>MATLAB</span>
+          <span>Fusion 360</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4 class="i18n" data-en="Graphic design">Diseño gráfico</h4>
+        <div class="skill-pills">
+          <span>Illustrator</span>
+          <span>Photoshop</span>
+          <span>InDesign</span>
+          <span>Premier</span>
+          <span>Canva</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!--
+      HABILIDADES NO TÉCNICAS (blandas)
+      Para agregar o quitar una, solo agrega/borra un <span>...</span> dentro de .soft-row.
+      Si la traduces, agrega data-en="..." como en los otros ejemplos.
+    -->
+    <div class="soft-skills">
+      <h3 class="i18n" data-en="Also:">También:</h3>
+      <div class="soft-row">
+        <span class="i18n" data-en="Prototyping">Prototipado</span>
+        <span class="i18n" data-en="Research">Investigación</span>
+        <span class="i18n" data-en="User-centered design">Diseño centrado en el usuario</span>
+        <span class="i18n" data-en="Problem solving">Resolución de problemas</span>
+        <span class="i18n" data-en="Project management">Gestión de proyectos</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CONFERENCIAS Y PREMIOS ============ -->
+<section id="conferencias">
+  <div class="wrap">
+    <div class="kicker i18n" data-en="04 — Talks &amp; awards">04 — Conferencias y premios</div>
+    <h2 class="section-title i18n" data-en="Where the work has been presented and recognized.">Dónde se ha presentado y reconocido el trabajo.</h2>
+    <!-- EDITA AQUÍ: cada .tl-item es un evento. Copia un bloque completo para agregar uno nuevo. -->
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="yr">2026</div>
+        <h4 class="i18n" data-en="KIWIE — Korean International Women's Invention Exposition">
+          KIWIE — Korean International Women's Invention Exposition
+        </h4>
+        <div class="research-title i18n"
+          data-en="Interchangeable Magnetic Device for Guided Cranial Osteotomy and Its Manufacturing Process">
+          Dispositivo magnético intercambiable para craneotomía guiada y proceso de fabricación del mismo
+        </div>
+        <div class="kind i18n" data-en="Research award - Gold medal">Premio de investigación - Medalla de oro</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2025</div>
+        <h4 class="i18n" data-en="OARSI World Congress — Osteoarthritis Research Society International">
+          OARSI World Congress — Osteoarthritis Research Society International
+        </h4>
+        <div class="research-title i18n"
+          data-en="ExoGrip: Design and Manufacture of a 3D-Printed Exoskeleton for Hand Rehabilitation in Osteoarthritis.">
+          ExoGrip: Diseño y manufactura de un exoesqueleto impreso en 3D para rehabilitación de artrosis en la mano.
+        </div>
+        <div class="kind i18n" data-en="Poster presentation">Presentación de póster</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2023</div>
+        <h4 class="i18n" data-en="IEEE ANDESCON — conference paper">
+          IEEE ANDESCON — paper de conferencia
+        </h4>
+        <div class="research-title i18n"
+          data-en="Design and Manufacture of a 3D-Printed Exoskeleton for Hand Rehabilitation in Osteoarthritis.">
+          Diseño y manufactura de un exoesqueleto impreso en 3D para rehabilitación de artrosis en la mano.
+        <div class="kind i18n" data-en="Conference paper">Paper de conferencia</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="yr">2022</div>
+        <h4 class="i18n" data-en="CITIIC — II International Congress on Technology and Innovation in Engineering and Computing">
+          CITIIC — II Congreso Internacional de Tecnología e Innovación en Ingeniería y Computación
+        </h4>
+        <div class="research-title i18n"
+          data-en="Design, Manufacturing and Mechanical Evaluation of a 3D-Printed Customized Wrist–Hand Orthosis for the Treatment of De Quervain Tenosynovitis">
+          Diseño, fabricación y evaluación mecánica de una órtesis de muñeca y mano personalizada impresa en 3D para el tratamiento de la tenosinovitis de De Quervain.
+        <div class="kind i18n" data-en="Conference paper">Paper de conferencia</div>
+      </div>
+
+      
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="kicker i18n" data-en="05 — Contact">05 — Contacto</div>
+    <h2 class="i18n" data-en="Let's talk." style="font-family:'Fraunces', serif; font-weight:600; font-size:clamp(30px,4vw,44px); margin-bottom:14px;">Conversemos.</h2>
+    <p class="i18n" data-en="For research collaborations, teaching, commissions, or just to talk about yarn and PLA.">Para colaboraciones de investigación, docencia, encargos, o simplemente para hablar de lana y PLA.</p>
+    <!-- EDITA AQUÍ: tu email real -->
+    <a class="contact-email" href="mailto:sofia@tudominio.com">sofia.franco@pucp.edu.pe</a>
+    <!-- EDITA AQUÍ: reemplaza los href="#" por tus links reales -->
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/sofia-franco-z">LinkedIn</a>
+      <a href="https://www.instagram.com/sofiaa_fz?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==">Instagram</a>
+      <a href="https://orcid.org/0009-0000-9039-8451">ORCID</a>
+    </div>
+  </div>
+</section>
+
+<footer class="i18n" data-en="Sofía Franco — portfolio, 2026">Sofia Franco — portafolio, 2026</footer>
+
+<script>
+  document.querySelectorAll('.i18n').forEach(el=>{ el.dataset.es = el.innerHTML; });
+  function setLang(lang){
+    document.querySelectorAll('.i18n').forEach(el=>{
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.es;
+    });
+    document.documentElement.lang = lang;
+    document.getElementById('btn-es').classList.toggle('active', lang==='es');
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    // mantiene el idioma al ir a proyectos-detalle.html y taller-detalle.html
+    document.querySelectorAll('a[href^="proyectos-detalle.html"], a[href^="taller-detalle.html"]').forEach(a=>{
+      const parts = a.getAttribute('href').split('#');
+      a.setAttribute('href', parts[0].split('?')[0] + '?lang=' + lang + (parts[1] ? '#' + parts[1] : ''));
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  (function(){
+    let lang = new URLSearchParams(location.search).get('lang');
+    if(!lang){ try{ lang = localStorage.getItem('lang'); }catch(e){} }
+    if(lang === 'en' || lang === 'es') setLang(lang);
+  })();
+
+  const starLayer = document.getElementById('stars');
+  const symbols = ['+','·','✦'];
+  for(let i=0;i<40;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*90+'%';
+    s.style.fontSize = (6+Math.random()*8)+'px';
+    s.style.opacity = 0.15+Math.random()*0.4;
+    s.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    starLayer.appendChild(s);
+  }
+</script>
+</body>
+</html>

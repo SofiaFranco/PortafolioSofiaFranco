@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--
+  Esta página tiene una sección por cada proyecto técnico.
+  El orden y los id="proyecto-N" deben coincidir con los href="proyectos-detalle.html#proyecto-N"
+  de la sección "Proyectos técnicos" en portafolio-completo (1).html.
+  Para agregar un proyecto nuevo: copia un bloque <section class="piece"> completo, cámbiale el id,
+  y agrega un bloque <a class="paper"> nuevo en portafolio-completo (1).html que apunte a ese id.
+  Traducciones: todo texto con class="i18n" tiene su versión en inglés en data-en="...".
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sofía Franco — Proyectos técnicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161210; --paper:#F3EDE4; --sage:#8A9A7E; --clay:#D9A9A0; --mustard:#C79A45; --signal:#C1442D;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; }
+
+  .topbar{
+    position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; gap:16px;
+    padding:20px 40px; background:var(--paper); border-bottom:1px solid rgba(36,31,27,0.12);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;
+  }
+  .topbar a.back{ color:var(--signal); text-decoration:none; }
+  .topbar .right{ display:flex; align-items:center; gap:18px; }
+  .topbar .wordmark{ opacity:0.6; }
+
+  .langtoggle{
+    display:flex; border:1px solid rgba(36,31,27,0.3); border-radius:20px; overflow:hidden;
+    font-size:11px; letter-spacing:0.05em;
+  }
+  .langtoggle button{
+    all:unset; cursor:pointer; padding:6px 12px; color:var(--ink); opacity:0.55;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .langtoggle button.active{ background:var(--signal); color:var(--paper); opacity:1; }
+
+  /* estructura de cada proyecto: kicker -> titulo -> parrafos -> specs -> collage de 5 fotos */
+  .piece{
+    padding:70px 40px; max-width:900px; margin:0 auto;
+    border-bottom:1px solid rgba(36,31,27,0.12);
+    scroll-margin-top:60px; /* para que la barra superior no tape el título al saltar al proyecto */
+  }
+  .piece:last-child{ border-bottom:none; }
+
+  .piece .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--signal); margin-bottom:10px;
+  }
+  .piece h2{ font-family:'Fraunces', serif; font-weight:500; font-style:italic; font-size:34px; margin-bottom:18px; max-width:680px; }
+  .piece p{ font-size:15.5px; line-height:1.75; opacity:0.85; margin-bottom:14px; max-width:620px; }
+  .piece .specs{ margin:20px 0 34px; display:flex; flex-wrap:wrap; gap:8px; }
+  .piece .specs span{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    border:1px solid rgba(36,31,27,0.3); padding:5px 10px; border-radius:20px; opacity:0.75;
+  }
+
+  /* COLLAGE 5
+     Distribución (escritorio, 3 columnas):
+       [ 1 1 | 2 ]
+       [ 1 1 | 3 ]
+       [ 4 | 5 5 ]
+     EDITA AQUÍ: cambia el nombre del archivo dentro de url('...') en cada .ph del HTML. */
+  .collage5{
+    display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-rows:200px; gap:12px;
+  }
+  .collage5 .ph{ border-radius:6px; background-color:#e4d8c4; }
+  .collage5 .ph:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  .collage5 .ph:nth-child(2),
+  .collage5 .ph:nth-child(3),
+  .collage5 .ph:nth-child(4){ grid-column:span 1; }
+  .collage5 .ph:nth-child(5){ grid-column:span 2; }
+
+  @media (max-width:640px){
+    .topbar{ padding:16px 20px; }
+    .topbar .wordmark{ display:none; }
+    .piece{ padding:50px 20px; }
+    .piece h2{ font-size:27px; }
+    .collage5{ grid-template-columns:repeat(2, 1fr); grid-auto-rows:150px; }
+    .collage5 .ph:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+    .collage5 .ph:nth-child(5){ grid-column:span 2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <!-- EDITA AQUÍ si cambias el nombre del archivo principal -->
+  <a class="back i18n" data-en="← Back to projects" href="portafolio-completo (1).html#investigacion">← Volver a proyectos</a>
+  <div class="right">
+    <div class="wordmark">Sofía Franco</div>
+    <div class="langtoggle">
+      <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROYECTO 1 -->
+<section class="piece" id="proyecto-1">
+  <div class="kicker i18n" data-en="Project 01 · 2025">Proyecto 01 · 2025</div>
+  <h2 class="i18n" data-en="Digital Documentation and 3D Reconstruction of Huaca Huantille">Digitalización y reconstrucción 3D de la Huaca Huantille</h2>
+  <p class="i18n" data-en="This project aimed to contribute to the preservation and accessibility of cultural heritage through the 3D digitization of Huaca Huantille and artifacts from the Ichma culture. Drone-based photogrammetry and handheld 3D scanning were used to process, reconstruct, and 3D print the models, enabling visually impaired individuals to physically interact with replicas of the artifacts.">Este proyecto buscó contribuir a la conservación y accesibilidad del patrimonio cultural mediante la digitalización 3D de la Huaca Huantille y piezas de la cultura Ichma. Se empleó fotogrametría con dron y escaneo 3D manual para procesar, reconstruir e imprimir los modelos, permitiendo que personas con discapacidad visual pudieran interactuar físicamente con réplicas de los objetos.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Photogrammetry">Fotogrametría</span>
+      <span class="i18n" data-en="3D scanning">Escaneo 3D</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage5">
+      <div class="ph" style="background:#e4d8c4 url('TP1-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP1-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP1-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP1-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP1-5.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 2 -->
+<section class="piece" id="proyecto-2">
+  <div class="kicker i18n" data-en="Project 02 · 2025">Proyecto 02 · 2025</div>
+  <h2 class="i18n" data-en="Design and 3D Printing of an Interactive Audio Module for Educational Plush Toys">Diseño e impresión 3D de un módulo de audio interactivo para peluche educativo</h2>
+  <p class="i18n" data-en="A compact enclosure was designed in Fusion 360 to integrate an electronic system capable of playing jungle animal sounds when a button is pressed. The component is intended to be incorporated into an educational plush toy, creating an interactive tool to introduce children to Peru's biodiversity.">Se diseñó en Fusion 360 una carcasa compacta para integrar un sistema electrónico capaz de reproducir sonidos de animales de la selva al presionar un botón. La pieza será incorporada en un peluche educativo, creando una herramienta interactiva para acercar a los niños a la biodiversidad del Perú.</p>
+  <div class="specs">
+      <span>Fusion 360</span>
+      <span class="i18n" data-en="Product design">Diseño de producto</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage5">
+      <div class="ph" style="background:#e4d8c4 url('TP2-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP2-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP2-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP2-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP2-5.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 3 -->
+<section class="piece" id="proyecto-3">
+  <div class="kicker i18n" data-en="Project 03 · 2024">Proyecto 03 · 2024</div>
+  <h2 class="i18n" data-en="Assembly and Testing of 3D-Printed Transradial Myoelectric Prostheses">Ensamblaje y pruebas de prótesis transradiales mioeléctricas impresas en 3D</h2>
+  <p class="i18n" data-en="This project involved supporting the assembly and evaluation of 3D-printed transradial myoelectric prostheses. Tasks included component preparation, device assembly, and assistance during user testing to evaluate the prostheses' functionality and fit.">Se brindó apoyo en el ensamblaje y evaluación de prótesis transradiales mioeléctricas fabricadas mediante impresión 3D. Las actividades incluyeron la preparación de componentes, ensamblaje del dispositivo y apoyo durante las pruebas con usuarios para evaluar su funcionamiento y ajuste.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Prosthetics">Prótesis</span>
+      <span class="i18n" data-en="Assembly">Ensamblaje</span>
+      <span class="i18n" data-en="User testing">Pruebas con usuarios</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage5">
+      <div class="ph" style="background:#e4d8c4 url('TP3-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP3-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP3-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP3-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP3-5.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 4 -->
+<section class="piece" id="proyecto-4">
+  <div class="kicker i18n" data-en="Project 04 · 2024">Proyecto 04 · 2024</div>
+  <h2 class="i18n" data-en="3D Segmentation of Computed Tomography Images for Surgical Planning">Segmentación 3D de tomografías computarizadas para planificación quirúrgica</h2>
+  <p class="i18n" data-en="Three-dimensional segmentation of computed tomography images was performed to generate digital anatomical models. The resulting models were prepared for 3D printing, providing physical representations that can support anatomical analysis and surgical planning.">Se realizó la segmentación tridimensional de imágenes obtenidas mediante tomografía computarizada para generar modelos anatómicos digitales. Los modelos fueron preparados para impresión 3D, proporcionando representaciones físicas para el análisis anatómico y la planificación quirúrgica.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Medical imaging">Imágenes médicas</span>
+      <span class="i18n" data-en="Segmentation">Segmentación</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage5">
+      <div class="ph" style="background:#e4d8c4 url('TP4-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP4-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP4-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP4-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP4-5.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 5 -->
+<section class="piece" id="proyecto-5">
+  <div class="kicker i18n" data-en="Project 05 · 2024">Proyecto 05 · 2024</div>
+  <h2 class="i18n" data-en="Design and Prototyping of a Syringe Infusion Pump Enclosure">Diseño y prototipado de carcasa para bomba de infusión de jeringa</h2>
+  <p class="i18n" data-en="A CAD enclosure was designed for a syringe infusion pump, considering size and weight constraints to achieve a compact and easily reproducible device. The design was developed with additive manufacturing in mind, enabling rapid prototyping and iteration through 3D printing.">Se diseñó en CAD la carcasa de una bomba de infusión de jeringa, considerando restricciones de tamaño y peso para obtener un dispositivo compacto y fácilmente reproducible. El diseño fue desarrollado para fabricación aditiva, permitiendo un prototipado e iteración rápidos mediante impresión 3D.</p>
+  <div class="specs">
+      <span>CAD</span>
+      <span class="i18n" data-en="Medical devices">Dispositivos médicos</span>
+      <span class="i18n" data-en="Prototyping">Prototipado</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage5">
+      <div class="ph" style="background:#e4d8c4 url('TP5-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP5-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP5-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP5-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP5-5.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 6 -->
+<section class="piece" id="proyecto-6">
+  <div class="kicker i18n" data-en="Project 06 · 2023–2024">Proyecto 06 · 2023–2024</div>
+  <h2 class="i18n" data-en="Development of 3D Printing Protocols for Dental Models">Desarrollo de protocolos de impresión 3D para modelos dentales</h2>
+  <p class="i18n" data-en="3D resin printing protocols were developed for the production of anatomical models for educational and dental applications. The work included calibration of the laboratory's 3D printers, optimization of printing parameters, and development of reproducible manufacturing protocols.">Se desarrollaron protocolos de fabricación mediante impresión 3D en resina para la producción de modelos anatómicos destinados a aplicaciones educativas y odontológicas. El trabajo incluyó la calibración de las impresoras 3D del laboratorio, la optimización de parámetros de impresión y el desarrollo de protocolos de fabricación reproducibles.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Resin">Resina</span>
+      <span class="i18n" data-en="Calibration">Calibración</span>
+      <span class="i18n" data-en="Dental models">Modelos dentales</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage5">
+      <div class="ph" style="background:#e4d8c4 url('TP6-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP6-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP6-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP6-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('TP6-5.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<script>
+  /* Idioma: se guarda entre páginas (?lang=en en el enlace + localStorage) */
+  document.querySelectorAll('.i18n').forEach(el=>{ el.dataset.es = el.innerHTML; });
+
+  function withLang(href, lang){
+    const parts = href.split('#');
+    const base = parts[0].split('?')[0];
+    return base + '?lang=' + lang + (parts[1] ? '#' + parts[1] : '');
+  }
+
+  function setLang(lang){
+    document.querySelectorAll('.i18n').forEach(el=>{
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.es;
+    });
+    document.documentElement.lang = lang;
+    document.getElementById('btn-es').classList.toggle('active', lang==='es');
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    document.querySelectorAll('a[href*=".html"]').forEach(a=>{
+      a.setAttribute('href', withLang(a.getAttribute('href'), lang));
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+
+  (function(){
+    let lang = new URLSearchParams(location.search).get('lang');
+    if(!lang){ try{ lang = localStorage.getItem('lang'); }catch(e){} }
+    if(lang === 'en' || lang === 'es') setLang(lang);
+  })();
+</script>
+</body>
+</html>
