@@ -56,6 +56,9 @@
   .piece h2{ font-family:'Fraunces', serif; font-weight:500; font-style:italic; font-size:34px; margin-bottom:18px; max-width:680px; }
   .piece p{ font-size:15.5px; line-height:1.75; opacity:0.85; margin-bottom:14px; max-width:620px; }
   .piece .specs{ margin:20px 0 34px; display:flex; flex-wrap:wrap; gap:8px; }
+  /* enlace a paper publicado */
+  .piece p.pub{ font-family:'IBM Plex Mono', monospace; font-size:12px; opacity:1; }
+  .piece p.pub a{ color:var(--signal); word-break:break-all; }
   .piece .specs span{
     font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
     border:1px solid rgba(36,31,27,0.3); padding:5px 10px; border-radius:20px; opacity:0.75;
@@ -77,6 +80,16 @@
   .collage5 .ph:nth-child(4){ grid-column:span 1; }
   .collage5 .ph:nth-child(5){ grid-column:span 2; }
 
+  /* COLLAGE 3
+     Distribución (escritorio, 3 columnas):
+       [ 1 1 | 2 ]
+       [ 1 1 | 3 ] */
+  .collage3{
+    display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-rows:200px; gap:12px;
+  }
+  .collage3 .ph{ border-radius:6px; background-color:#e4d8c4; }
+  .collage3 .ph:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+
   @media (max-width:640px){
     .topbar{ padding:16px 20px; }
     .topbar .wordmark{ display:none; }
@@ -85,6 +98,8 @@
     .collage5{ grid-template-columns:repeat(2, 1fr); grid-auto-rows:150px; }
     .collage5 .ph:nth-child(1){ grid-column:span 2; grid-row:span 2; }
     .collage5 .ph:nth-child(5){ grid-column:span 2; }
+    .collage3{ grid-template-columns:repeat(2, 1fr); grid-auto-rows:150px; }
+    .collage3 .ph:nth-child(1){ grid-column:span 2; grid-row:span 2; }
   }
 </style>
 </head>
@@ -104,21 +119,25 @@
 
 <!-- PROYECTO 1 -->
 <section class="piece" id="proyecto-1">
-  <div class="kicker i18n" data-en="Project 01 · 2025">Proyecto 01 · 2025</div>
+  <div class="kicker i18n" data-en="Project 01 · 2026">Proyecto 01 · 2026</div>
   <h2 class="i18n" data-en="Digital Documentation and 3D Reconstruction of Huaca Huantille">Digitalización y reconstrucción 3D de la Huaca Huantille</h2>
-  <p class="i18n" data-en="This project aimed to contribute to the preservation and accessibility of cultural heritage through the 3D digitization of Huaca Huantille and artifacts from the Ichma culture. Drone-based photogrammetry and handheld 3D scanning were used to process, reconstruct, and 3D print the models, enabling visually impaired individuals to physically interact with replicas of the artifacts.">Este proyecto buscó contribuir a la conservación y accesibilidad del patrimonio cultural mediante la digitalización 3D de la Huaca Huantille y piezas de la cultura Ichma. Se empleó fotogrametría con dron y escaneo 3D manual para procesar, reconstruir e imprimir los modelos, permitiendo que personas con discapacidad visual pudieran interactuar físicamente con réplicas de los objetos.</p>
+  <p class="i18n" data-en="This project aimed to contribute to the preservation and accessibility of cultural heritage through the 3D digitization of Huaca Huantille and ceramic pieces from the Ichma culture. The work was carried out in two stages.">Este proyecto tuvo como objetivo contribuir a la conservación y accesibilidad del patrimonio cultural mediante la digitalización 3D de la Huaca Huantille y de piezas de cerámica de la cultura Ichma. El trabajo se desarrolló en dos etapas.</p>
+  <p class="i18n" data-en="In the first stage, I scanned Ichma ceramic pieces using the Creality Raptor Pro handheld scanner. I then post-processed the models in Creality's software and in Blender, and fabricated replicas through 3D printing in white filament. During the Huaca's anniversary, these replicas were used in an activity in which attendees could paint them alongside a specialist, reproducing the designs of the original pieces. The Braille Perú community also took part, and its members had the opportunity to explore these representations by touch, getting closer to a heritage that can normally only be seen behind glass.">En la primera etapa, escaneé piezas de cerámica Ichma utilizando el escáner de mano Creality Raptor Pro. Posteriormente, realicé el postprocesamiento de los modelos en el software de Creality y en Blender, y fabriqué réplicas mediante impresión 3D en filamento blanco. Durante el aniversario de la Huaca, estas réplicas se utilizaron en una actividad en la que los asistentes pudieron pintarlas junto a un especialista, reproduciendo los diseños de las piezas originales. También participó la comunidad Braille Perú, cuyos integrantes tuvieron la oportunidad de explorar táctilmente estas representaciones, acercándose a un patrimonio que normalmente solo puede observarse detrás de una vitrina.</p>
+  <p class="i18n" data-en="In the second stage, I took part in digitizing the structure of the Huaca through aerial photogrammetry, using a DJI Mavic 3E drone and a flight plan of approximately seven minutes. From the images obtained, a three-dimensional model was reconstructed, which was then prepared and 3D printed in PLA Silk filament. Its glossy finish helped highlight the architectural details of the structure.">En la segunda etapa, participé en la digitalización de la estructura de la Huaca mediante fotogrametría aérea, utilizando un dron DJI Mavic 3E y un plan de vuelo de aproximadamente siete minutos. A partir de las imágenes obtenidas, se reconstruyó el modelo tridimensional, que posteriormente fue preparado e impreso en 3D con filamento PLA Silk. Su acabado brillante permitió resaltar los detalles arquitectónicos de la estructura.</p>
   <div class="specs">
-      <span class="i18n" data-en="Photogrammetry">Fotogrametría</span>
       <span class="i18n" data-en="3D scanning">Escaneo 3D</span>
+      <span class="i18n" data-en="Drone photogrammetry">Fotogrametría con dron</span>
+      <span>Blender</span>
       <span class="i18n" data-en="3D printing">Impresión 3D</span>
+      <span class="i18n" data-en="Accessibility">Accesibilidad</span>
   </div>
   <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
   <div class="collage5">
-      <div class="ph" style="background:#e4d8c4 url('TP1-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP1-2.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP1-3.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP1-4.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP1-5.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT1-1.gif') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT1-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT1-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT1-4.JPEG') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT1-5.png') center/cover"></div>
   </div>
 </section>
 
@@ -126,67 +145,93 @@
 <section class="piece" id="proyecto-2">
   <div class="kicker i18n" data-en="Project 02 · 2025">Proyecto 02 · 2025</div>
   <h2 class="i18n" data-en="Design and 3D Printing of an Interactive Audio Module for Educational Plush Toys">Diseño e impresión 3D de un módulo de audio interactivo para peluche educativo</h2>
-  <p class="i18n" data-en="A compact enclosure was designed in Fusion 360 to integrate an electronic system capable of playing jungle animal sounds when a button is pressed. The component is intended to be incorporated into an educational plush toy, creating an interactive tool to introduce children to Peru's biodiversity.">Se diseñó en Fusion 360 una carcasa compacta para integrar un sistema electrónico capaz de reproducir sonidos de animales de la selva al presionar un botón. La pieza será incorporada en un peluche educativo, creando una herramienta interactiva para acercar a los niños a la biodiversidad del Perú.</p>
+  <p class="i18n" data-en="This project was developed under the direction of Professor Rustha Luna Pozzi Escot, a French-Peruvian visual artist with a PhD in Fine Arts and a faculty member at the PUCP School of Art and Design. Her work explores the relationship between art, culture, and participatory textile practices.">Este proyecto fue desarrollado bajo la dirección de la profesora Rustha Luna Pozzi Escot, artista plástica y visual franco-peruana, doctora en Artes Plásticas y docente de la Facultad de Arte y Diseño de la PUCP. Su trabajo explora la relación entre arte, cultura y prácticas textiles participativas.</p>
+  <p class="i18n" data-en="The proposal consisted of developing educational plush toys shaped like representative animals of the Peruvian rainforest, with an electronic module inside that plays sounds of the Amazon at the press of a button. The goal was to create an interactive experience that would allow children to recognize the sounds of the natural environments where these animals live and to learn about Peru's biodiversity.">La propuesta consistió en desarrollar peluches educativos con formas de animales representativos de la selva peruana, incorporando en su interior un módulo electrónico capaz de reproducir sonidos de la Amazonía al presionar un botón. La intención era crear una experiencia interactiva que permitiera a los niños reconocer los sonidos de los entornos naturales donde habitan estos animales y acercarse a la biodiversidad del Perú.</p>
+  <p class="i18n" data-en="As part of the project team, I was in charge of designing the enclosures that would house the electronic components. I used Fusion 360 to model two versions of a compact enclosure, one smaller than the other, so they could be adapted to plush toys of different sizes. The designs were conceived for 3D printing, taking into account the space available inside each figure and the integration of the activation button.">Como parte del equipo del proyecto, me encargué del diseño de las carcasas que alojarían los componentes electrónicos. Utilicé Fusion 360 para modelar dos versiones de una carcasa compacta, una de menor tamaño que la otra, con el objetivo de adaptarlas a peluches de diferentes dimensiones. Los diseños fueron concebidos para su fabricación mediante impresión 3D, considerando el espacio disponible dentro de cada figura y la integración del botón de activación.</p>
   <div class="specs">
       <span>Fusion 360</span>
       <span class="i18n" data-en="Product design">Diseño de producto</span>
       <span class="i18n" data-en="3D printing">Impresión 3D</span>
   </div>
   <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
-  <div class="collage5">
-      <div class="ph" style="background:#e4d8c4 url('TP2-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP2-2.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP2-3.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP2-4.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP2-5.jpeg') center/cover"></div>
+  <div class="collage3">
+      <div class="ph" style="background:#e4d8c4 url('PT2-1.gif') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT2-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT2-3.jpeg') center/cover"></div>
   </div>
 </section>
 
 <!-- PROYECTO 3 -->
 <section class="piece" id="proyecto-3">
-  <div class="kicker i18n" data-en="Project 03 · 2024">Proyecto 03 · 2024</div>
-  <h2 class="i18n" data-en="Assembly and Testing of 3D-Printed Transradial Myoelectric Prostheses">Ensamblaje y pruebas de prótesis transradiales mioeléctricas impresas en 3D</h2>
-  <p class="i18n" data-en="This project involved supporting the assembly and evaluation of 3D-printed transradial myoelectric prostheses. Tasks included component preparation, device assembly, and assistance during user testing to evaluate the prostheses' functionality and fit.">Se brindó apoyo en el ensamblaje y evaluación de prótesis transradiales mioeléctricas fabricadas mediante impresión 3D. Las actividades incluyeron la preparación de componentes, ensamblaje del dispositivo y apoyo durante las pruebas con usuarios para evaluar su funcionamiento y ajuste.</p>
+  <div class="kicker i18n" data-en="Project 03 · 2025">Proyecto 03 · 2025</div>
+  <h2 class="i18n" data-en="Learning by Doing: Teaching Biomechanics and Digital Fabrication">Aprender haciendo: docencia en biomecánica y fabricación digital</h2>
+  <p class="i18n" data-en="In 2025, I served as a teaching assistant for the Biomechanics course, taken by eighth-semester Biomedical Engineering students. My responsibilities included developing the laboratory guides, guiding students through the lab exercises, and grading their entry quizzes and lab reports. In the lab, we worked with equipment such as IMU sensors, force platforms, motion analysis software like Kinovea, and basic measuring instruments such as goniometers, among others.">Durante 2025 fui jefa de práctica del curso de Biomecánica, dirigido a estudiantes de octavo ciclo de Ingeniería Biomédica. Entre mis funciones estaban desarrollar las guías de laboratorio, acompañar a los alumnos durante los ejercicios prácticos y evaluar sus pruebas de entrada y reportes. En el laboratorio trabajamos con equipos como sensores IMU, plataformas de fuerza, software de análisis de movimiento como Kinovea e instrumentos básicos de medición como goniómetros, entre otros.</p>
+  <p class="i18n" data-en="I have also led several workshops on 3D printing, Fusion 360 design, and digitization technologies. In them, I share the same tools I use in my own projects, from 3D modeling to fabrication.">Además, he dictado diversos talleres de impresión 3D, diseño en Fusion 360 y tecnologías de digitalización. En ellos comparto las mismas herramientas que utilizo en mis propios proyectos, desde el modelado 3D hasta la fabricación.</p>
   <div class="specs">
-      <span class="i18n" data-en="Prosthetics">Prótesis</span>
-      <span class="i18n" data-en="Assembly">Ensamblaje</span>
-      <span class="i18n" data-en="User testing">Pruebas con usuarios</span>
+      <span class="i18n" data-en="Biomechanics">Biomecánica</span>
+      <span class="i18n" data-en="IMU sensors">Sensores IMU</span>
+      <span>Kinovea</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+      <span>Fusion 360</span>
   </div>
   <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
   <div class="collage5">
-      <div class="ph" style="background:#e4d8c4 url('TP3-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP3-2.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP3-3.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP3-4.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP3-5.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT3-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT3-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT3-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT3-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT3-5.jpeg') center/cover"></div>
   </div>
 </section>
 
 <!-- PROYECTO 4 -->
 <section class="piece" id="proyecto-4">
   <div class="kicker i18n" data-en="Project 04 · 2024">Proyecto 04 · 2024</div>
-  <h2 class="i18n" data-en="3D Segmentation of Computed Tomography Images for Surgical Planning">Segmentación 3D de tomografías computarizadas para planificación quirúrgica</h2>
-  <p class="i18n" data-en="Three-dimensional segmentation of computed tomography images was performed to generate digital anatomical models. The resulting models were prepared for 3D printing, providing physical representations that can support anatomical analysis and surgical planning.">Se realizó la segmentación tridimensional de imágenes obtenidas mediante tomografía computarizada para generar modelos anatómicos digitales. Los modelos fueron preparados para impresión 3D, proporcionando representaciones físicas para el análisis anatómico y la planificación quirúrgica.</p>
+  <h2 class="i18n" data-en="Assembly and Testing of 3D-Printed Transradial Myoelectric Prostheses">Ensamblaje y pruebas de prótesis transradiales mioeléctricas impresas en 3D</h2>
+  <p class="i18n" data-en="This project was led by Professor Enzo Romero Muñiz, who holds a master's degree in Mechatronics Engineering and is a researcher in the development of assistive technologies and bionic upper-limb prostheses.">Este proyecto fue liderado por el profesor Enzo Romero Muñiz, magíster en Ingeniería Mecatrónica e investigador en el desarrollo de tecnologías de asistencia y prótesis biónicas de miembro superior.</p>
+  <p class="i18n" data-en="The research focused on developing a personalized, low-cost transradial myoelectric prosthesis manufactured through 3D printing. The device uses electromyographic (EMG) sensors to record the user's muscle activity and an artificial intelligence–based control system to interpret these signals and recognize the intention to perform movements.">La investigación se enfocó en el desarrollo de una prótesis transradial mioeléctrica personalizada y de bajo costo, fabricada mediante impresión 3D. El dispositivo utiliza sensores electromiográficos (EMG) para registrar la actividad muscular del usuario y un sistema de control basado en inteligencia artificial para interpretar sus señales y reconocer la intención de realizar movimientos.</p>
+  <p class="i18n" data-en="My role within the research team focused on assembling and evaluating the prostheses. I was responsible for preparing and assembling the components of the devices, and I took part in user testing, in which their functionality and fit were evaluated. This experience allowed me to engage in the integration process of an assistive technology, from the fabrication of its components to its evaluation with users.">Mi participación dentro del equipo de investigación se centró en el ensamblaje y la evaluación de las prótesis. Me encargué de preparar y ensamblar los componentes de los dispositivos y participé en las pruebas con usuarios, en las que se evaluaron su funcionamiento y ajuste. Esta experiencia me permitió involucrarme en el proceso de integración de una tecnología asistiva, desde la fabricación de sus componentes hasta su evaluación con personas usuarias.</p>
+  <p class="pub"><span class="i18n" data-en="Published paper:">Paper publicado:</span> <a href="https://ieeexplore.ieee.org/document/11114954" target="_blank" rel="noopener">ieeexplore.ieee.org/document/11114954</a></p>
   <div class="specs">
-      <span class="i18n" data-en="Medical imaging">Imágenes médicas</span>
-      <span class="i18n" data-en="Segmentation">Segmentación</span>
-      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+      <span class="i18n" data-en="Prosthetics">Prótesis</span>
+      <span class="i18n" data-en="Assembly">Ensamblaje</span>
+      <span class="i18n" data-en="User testing">Pruebas con usuarios</span>
+      <span>IEEE</span>
   </div>
   <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
-  <div class="collage5">
-      <div class="ph" style="background:#e4d8c4 url('TP4-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP4-2.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP4-3.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP4-4.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP4-5.jpeg') center/cover"></div>
+  <div class="collage3">
+      <div class="ph" style="background:#e4d8c4 url('PT4-1.gif') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT4-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT4-3.jpeg') center/cover"></div>
   </div>
 </section>
 
 <!-- PROYECTO 5 -->
 <section class="piece" id="proyecto-5">
   <div class="kicker i18n" data-en="Project 05 · 2024">Proyecto 05 · 2024</div>
+  <h2 class="i18n" data-en="3D Segmentation of Computed Tomography Images for Surgical Planning">Segmentación 3D de tomografías computarizadas para planificación quirúrgica</h2>
+  <p class="i18n" data-en="During my time at the UPCH Biomedical Engineering Laboratory, I worked on the three-dimensional segmentation of medical images obtained through computed tomography (CT). This process made it possible to transform the anatomical information contained in two-dimensional images into three-dimensional digital models, making it easier to identify and visualize structures of interest.">Durante mi participación en el Laboratorio de Ingeniería Biomédica de la UPCH, trabajé en la segmentación tridimensional de imágenes médicas obtenidas mediante tomografía computarizada (TC). Este proceso permitió transformar información anatómica contenida en imágenes bidimensionales en modelos digitales tridimensionales, facilitando la identificación y visualización de estructuras de interés.</p>
+  <p class="i18n" data-en="My work consisted of segmenting and preparing the anatomical models for subsequent fabrication through 3D printing. These physical representations provided tangible models for studying anatomy, analyzing specific structures, and supporting surgical planning. In this way, I took part in the workflow that connects medical imaging with the fabrication of personalized anatomical models.">Mi trabajo consistió en realizar la segmentación y preparación de los modelos anatómicos para su posterior fabricación mediante impresión 3D. Estas representaciones físicas permitieron disponer de modelos tangibles para el estudio de la anatomía, el análisis de estructuras específicas y el apoyo a la planificación quirúrgica. De esta manera, participé en el flujo de trabajo que conecta las imágenes médicas con la fabricación de modelos anatómicos personalizados.</p>
+  <div class="specs">
+      <span class="i18n" data-en="Medical imaging">Imágenes médicas</span>
+      <span class="i18n" data-en="Segmentation">Segmentación</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage3">
+      <div class="ph" style="background:#e4d8c4 url('PT5-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT5-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT5-3.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 6 -->
+<section class="piece" id="proyecto-6">
+  <div class="kicker i18n" data-en="Project 06 · 2024">Proyecto 06 · 2024</div>
   <h2 class="i18n" data-en="Design and Prototyping of a Syringe Infusion Pump Enclosure">Diseño y prototipado de carcasa para bomba de infusión de jeringa</h2>
-  <p class="i18n" data-en="A CAD enclosure was designed for a syringe infusion pump, considering size and weight constraints to achieve a compact and easily reproducible device. The design was developed with additive manufacturing in mind, enabling rapid prototyping and iteration through 3D printing.">Se diseñó en CAD la carcasa de una bomba de infusión de jeringa, considerando restricciones de tamaño y peso para obtener un dispositivo compacto y fácilmente reproducible. El diseño fue desarrollado para fabricación aditiva, permitiendo un prototipado e iteración rápidos mediante impresión 3D.</p>
+  <p class="i18n" data-en="I developed this project in 2023 as part of the Biomedical Instrumentation course. The goal was to design and fabricate a prototype syringe infusion pump through 3D printing, exploring digital fabrication as an alternative for developing lower-cost medical devices that are easier to reproduce.">Este proyecto lo desarrollé en 2023 como parte del curso de Instrumentación Biomédica. El objetivo fue diseñar y fabricar un prototipo de bomba de infusión de jeringa mediante impresión 3D, explorando la fabricación digital como una alternativa para desarrollar dispositivos médicos de menor costo y facilitar su reproducción.</p>
+  <p class="i18n" data-en="My role focused on the CAD design of the device's enclosure, taking into account the layout of its internal components and the size and weight constraints in order to achieve a compact and functional structure. I developed the model for fabrication through 3D printing, which made it possible to bring the design to life and make adjustments during the prototyping process.">Mi participación se centró en el diseño CAD de la carcasa del dispositivo, considerando la disposición de sus componentes internos y las restricciones de tamaño y peso para obtener una estructura compacta y funcional. Desarrollé el modelo para su fabricación mediante impresión 3D, lo que permitió materializar el diseño y realizar ajustes durante el proceso de prototipado.</p>
+  <p class="i18n" data-en="The project was presented at a poster session during the Summer School at Pontificia Universidad Javeriana in Colombia, where the proposal and the development of the prototype were shared.">El proyecto fue presentado en una sesión de póster durante el Summer School de la Pontificia Universidad Javeriana, en Colombia, donde se compartió la propuesta y el desarrollo del prototipo.</p>
   <div class="specs">
       <span>CAD</span>
       <span class="i18n" data-en="Medical devices">Dispositivos médicos</span>
@@ -194,31 +239,54 @@
   </div>
   <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
   <div class="collage5">
-      <div class="ph" style="background:#e4d8c4 url('TP5-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP5-2.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP5-3.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP5-4.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP5-5.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT6-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT6-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT6-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT6-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT6-5.jpeg') center/cover"></div>
   </div>
 </section>
 
-<!-- PROYECTO 6 -->
-<section class="piece" id="proyecto-6">
-  <div class="kicker i18n" data-en="Project 06 · 2023–2024">Proyecto 06 · 2023–2024</div>
+<!-- PROYECTO 7 -->
+<section class="piece" id="proyecto-7">
+  <div class="kicker i18n" data-en="Project 07 · 2023–2024">Proyecto 07 · 2023–2024</div>
   <h2 class="i18n" data-en="Development of 3D Printing Protocols for Dental Models">Desarrollo de protocolos de impresión 3D para modelos dentales</h2>
-  <p class="i18n" data-en="3D resin printing protocols were developed for the production of anatomical models for educational and dental applications. The work included calibration of the laboratory's 3D printers, optimization of printing parameters, and development of reproducible manufacturing protocols.">Se desarrollaron protocolos de fabricación mediante impresión 3D en resina para la producción de modelos anatómicos destinados a aplicaciones educativas y odontológicas. El trabajo incluyó la calibración de las impresoras 3D del laboratorio, la optimización de parámetros de impresión y el desarrollo de protocolos de fabricación reproducibles.</p>
+  <p class="i18n" data-en="This work was carried out at the UPCH Biomedical Engineering Laboratory, with the goal of establishing reproducible procedures for manufacturing models through resin 3D printing, mainly for educational and dental applications.">Este trabajo se desarrolló en el laboratorio de Ingeniería Biomédica de la UPCH, con el objetivo de establecer procedimientos reproducibles para la fabricación de modelos mediante impresión 3D en resina, destinados principalmente a aplicaciones educativas y odontológicas.</p>
+  <p class="i18n" data-en="My role included calibrating and setting up the laboratory's 3D printers, as well as evaluating and optimizing manufacturing parameters to obtain models with the required characteristics. I also developed resin printing protocols, documenting the necessary procedures to make the models easier to reproduce and to standardize the manufacturing processes. This work helped strengthen the laboratory's capacity to produce anatomical and dental models using additive manufacturing technologies.">Mi participación incluyó la calibración y puesta a punto de las impresoras 3D del laboratorio, así como la evaluación y optimización de parámetros de fabricación para obtener modelos con las características requeridas. También desarrollé protocolos de impresión en resina, documentando los procedimientos necesarios para facilitar la reproducción de los modelos y estandarizar los procesos de fabricación. Este trabajo contribuyó a fortalecer las capacidades del laboratorio para producir modelos anatómicos y dentales mediante tecnologías de fabricación aditiva.</p>
   <div class="specs">
       <span class="i18n" data-en="Resin">Resina</span>
       <span class="i18n" data-en="Calibration">Calibración</span>
       <span class="i18n" data-en="Dental models">Modelos dentales</span>
   </div>
   <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
+  <div class="collage3">
+      <div class="ph" style="background:#e4d8c4 url('PT7-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT7-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT7-3.jpeg') center/cover"></div>
+  </div>
+</section>
+
+<!-- PROYECTO 8 -->
+<section class="piece" id="proyecto-8">
+  <!-- EDITA AQUÍ: agrega el año, p. ej. "Proyecto 08 · 2025" -->
+  <div class="kicker i18n" data-en="Project 08">Proyecto 08</div>
+  <h2 class="i18n" data-en="3D Digitization and Printing of Historic Architectural Elements of Lima">Digitalización e impresión 3D de elementos arquitectónicos históricos de Lima</h2>
+  <p class="i18n" data-en="This project grew out of a collaboration between FabCore PUCP and PROLIMA, with the goal of contributing to the documentation and dissemination of the architectural heritage of Lima's Historic Center. As part of this initiative, we used handheld 3D scanning to digitize various architectural details found on historic buildings downtown. We then processed the digital models and fabricated them through 3D printing, producing physical replicas that allowed their shapes and features to be appreciated in greater detail.">Este proyecto se desarrolló a partir de la colaboración entre FabCore PUCP y PROLIMA, con el objetivo de contribuir a la documentación y difusión del patrimonio arquitectónico del Centro Histórico de Lima. Como parte de esta iniciativa, digitalizamos mediante escaneo 3D de mano diversos detalles arquitectónicos presentes en edificios históricos del centro. Posteriormente, procesamos los modelos digitales y los fabricamos mediante impresión 3D, generando réplicas físicas que permitieran apreciar con mayor detalle sus formas y características.</p>
+  <p class="i18n" data-en="I also took part in preparing pieces for the presentation of the proposal for the new Arch of Lima, held at an exhibition that aimed to show the evolution of the city's historic arches and to provide context for the proposal to build a new one. For this presentation, we fabricated scale models of the three previous arches and of the newly proposed design. The process took about three weeks of work, during which we printed the different architectural elements and assembled the pieces to complete the models.">Asimismo, participé en la preparación de piezas para la presentación de la propuesta del nuevo Arco de Lima, realizada en una exposición que buscaba mostrar la evolución de los arcos históricos de la ciudad y contextualizar la propuesta de construcción de uno nuevo. Para esta presentación, fabricamos modelos a escala de los tres arcos anteriores y del nuevo diseño propuesto. El proceso tomó aproximadamente tres semanas de trabajo, durante las cuales imprimimos los distintos elementos arquitectónicos y realizamos el ensamblaje de las piezas para completar los modelos.</p>
+  <p class="i18n" data-en="It was an especially rewarding experience because it allowed me to apply 3D digitization and fabrication tools to a project connected to the history and identity of Lima. I was also able to see how these technologies can go beyond the technical realm and become tools for communicating, preserving, and bringing cultural heritage closer to people.">Fue una experiencia especialmente gratificante porque me permitió aplicar herramientas de digitalización y fabricación 3D en un proyecto vinculado con la historia y la identidad de Lima. Además, pude ver cómo estas tecnologías pueden trascender el ámbito técnico y convertirse en herramientas para comunicar, preservar y acercar el patrimonio cultural a las personas.</p>
+  <div class="specs">
+      <span class="i18n" data-en="3D scanning">Escaneo 3D</span>
+      <span class="i18n" data-en="3D printing">Impresión 3D</span>
+      <span class="i18n" data-en="Scale models">Modelos a escala</span>
+      <span class="i18n" data-en="Architectural heritage">Patrimonio arquitectónico</span>
+  </div>
+  <!-- EDITA AQUÍ: cambia el nombre de cada foto -->
   <div class="collage5">
-      <div class="ph" style="background:#e4d8c4 url('TP6-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP6-2.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP6-3.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP6-4.jpeg') center/cover"></div>
-      <div class="ph" style="background:#e4d8c4 url('TP6-5.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT8-1.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT8-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT8-3.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT8-4.jpeg') center/cover"></div>
+      <div class="ph" style="background:#e4d8c4 url('PT8-5.jpeg') center/cover"></div>
   </div>
 </section>
 
