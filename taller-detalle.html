@@ -55,6 +55,9 @@
   }
   .piece h2{ font-family:'Fraunces', serif; font-weight:500; font-style:italic; font-size:34px; margin-bottom:18px; max-width:620px; }
   .piece p{ font-size:15.5px; line-height:1.75; opacity:0.85; margin-bottom:14px; max-width:620px; }
+  /* enlace externo (p. ej. revista publicada) */
+  .piece p.pub{ font-family:'IBM Plex Mono', monospace; font-size:12px; opacity:1; }
+  .piece p.pub a{ color:var(--signal); word-break:break-all; }
   .piece .specs{ margin:20px 0 34px; display:flex; flex-wrap:wrap; gap:8px; }
   .piece .specs span{
     font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
@@ -296,7 +299,7 @@
 
 <div class="topbar">
   <!-- EDITA AQUÍ si cambias el nombre del archivo principal -->
-  <a class="back i18n" data-en="← Back to the workshop" href="portafolio-completo (1).html#taller">← Volver al taller</a>
+  <a class="back i18n" data-en="← Back to the workshop" href="index.html#taller">← Volver al taller</a>
   <div class="right">
     <div class="wordmark">Sofía Franco</div>
     <div class="langtoggle">
@@ -355,15 +358,15 @@
   <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
   <div class="collage12">
       <div class="ph" style="background:url('TC2\ -\ 1.jpeg') center/cover"></div>
-      <div class="ph" style="background:url('TC2\ -\ 2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 2.png') top/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 3.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 4.jpeg') center/cover"></div>
-      <div class="ph" style="background:url('TC2\ -\ 5.jpeg') center/cover"></div>
-      <div class="ph" style="background:url('TC2\ -\ 6.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 5.png') top/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 6.png') top/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 7.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 8.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 9.jpeg') center/cover"></div>
-      <div class="ph" style="background:url('TC2\ -\ 10.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC2\ -\ 10.png') top/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 11.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC2\ -\ 12.jpeg') center/cover"></div>
   </div>
@@ -382,7 +385,7 @@
   <div class="collage3">
       <div class="ph" style="background:url('TC4-1.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC4-2.png') center/cover"></div>
-      <div class="ph" style="background:url('TC4-3.png') center/cover"></div>
+      <div class="ph" style="background:url('TC4-3.jpeg') center/cover"></div>
   </div>
 </section>
 
@@ -416,8 +419,8 @@
   <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
   <div class="collage3">
       <div class="ph" style="background:url('TC6 - 1.jpeg') center/cover"></div>
-      <div class="ph" style="background:url('TC6-2.png') center/cover"></div>
-      <div class="ph" style="background:url('TC6-3.png') center/cover"></div>
+      <div class="ph" style="background:url('TC6 - 2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC6 - 3.jpeg') center/cover"></div>
   </div>
 </section>
 
@@ -493,7 +496,7 @@
   <div class="collage3">
       <div class="ph" style="background:url('TC11-1.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC11-2.png') center/cover"></div>
-      <div class="ph" style="background:url('TC11-3.png') center/cover"></div>
+      <div class="ph" style="background:url('TC11-3.jpeg') center/cover"></div>
   </div>
 </section>
 
@@ -509,13 +512,13 @@
       <span class="i18n" data-en="Social media">Redes sociales</span>
   </div>
   <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
-  <div class="collage3">
+  <div class="collage6">
       <div class="ph" style="background:url('TC9-1.png') center/cover"></div>
-      <div class="ph" style="background:url('TC9-6.png') center/cover"></div>
-      <div class="ph" style="background:url('TC9-2.png') center/cover"></div>
+      <div class="ph" style="background:url('TC9-6.jpeg') center/cover"></div>
       <div class="ph" style="background:url('TC9-5.png') center/cover"></div>
-      <div class="ph" style="background:url('TC9-3.tif') center/cover"></div>
       <div class="ph" style="background:url('TC9-4.png') center/cover"></div>
+      <div class="ph" style="background:url('TC9-7.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC9-8.jpeg') center/cover"></div>
   </div>
 </section>
 
@@ -525,6 +528,8 @@
   <h2 class="i18n" data-en="IEEE EMBS PUCP magazine coordination and design">Coordinación y diseño de revista IEEE EMBS PUCP</h2>
   <p class="i18n" data-en="From 2022 to 2024, I was part of the IEEE EMBS PUCP student chapter as magazine coordinator. During that time, we published three editions of our annual magazine — two digital and one in print — as well as a monthly newsletter from 2023 to 2024.">De 2022 a 2024 formé parte del capítulo estudiantil IEEE EMBS PUCP como coordinadora de la revista. Durante ese periodo publicamos tres ediciones de la revista anual —dos virtuales y una impresa—, además de un boletín mensual entre 2023 y 2024.</p>
   <p class="i18n" data-en="Beyond coordinating the team, I focused especially on design and editing: I designed more than 12 newsletters and laid out more than 10 magazine articles. This experience helped me strengthen my skills in Adobe Illustrator, Adobe InDesign, and Canva, while also developing my leadership and teamwork.">Además de organizar al equipo, me enfoqué especialmente en el diseño y la edición: diseñé más de 12 boletines y la diagramación de más de 10 artículos de la revista. Esta experiencia me permitió consolidar mis habilidades en Adobe Illustrator, Adobe InDesign y Canva, y al mismo tiempo desarrollar mi liderazgo y mi capacidad de trabajo en equipo.</p>
+  <!-- EDITA AQUÍ: enlace a los boletines y la revista -->
+  <p class="pub"><span class="i18n" data-en="Newsletters and magazine:">Boletines y revista:</span> <a href="https://www.calameo.com/accounts/7294338" target="_blank" rel="noopener">calameo.com/accounts/7294338</a></p>
   <div class="specs">
       <span class="i18n" data-en="Editorial design">Diseño editorial</span>
       <span class="i18n" data-en="Graphic design">Diseño gráfico</span>
@@ -533,8 +538,8 @@
   <!-- EDITA AQUÍ: reemplaza cada .ph por tu foto real -->
   <div class="collage3">
       <div class="ph" style="background:url('TC12-1.jpeg') center/cover"></div>
-      <div class="ph" style="background:url('TC12-2.png') center/cover"></div>
-      <div class="ph" style="background:url('TC12-3.png') center/cover"></div>
+      <div class="ph" style="background:url('TC12-2.jpeg') center/cover"></div>
+      <div class="ph" style="background:url('TC12-3.jpeg') center/cover"></div>
   </div>
 </section>
 
