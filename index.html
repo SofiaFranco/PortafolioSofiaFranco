@@ -60,7 +60,7 @@
   .brandrow .right{ color:var(--paper); opacity:0.75; }
 
   .illustration{ position:relative; max-width:900px; margin:0px auto 0; z-index:5; }
-  .illustration svg{ width:100%; height:auto; display:block; }
+  .illustration img{ width:100%; height:auto; display:block; }
 
   .tagline{
     position:relative; z-index:5; text-align:center; margin-top:0; padding-bottom:40px;
@@ -223,46 +223,8 @@
   </div>
 
   <div class="illustration">
-    <svg viewBox="0 0 1180 620" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke-linecap="round">
-        <path d="M110,120 C 220,60 300,180 380,140 C 470,95 520,40 610,70 C 700,40 760,95 850,60 C 930,30 990,80 1070,110" stroke="var(--sage)" stroke-width="9" opacity="0.85"/>
-        <path d="M140,560 C 240,520 300,590 400,555 C 500,520 560,585 660,548 C 760,510 820,570 920,540 C 990,520 1030,555 1080,535" stroke="var(--clay)" stroke-width="9" opacity="0.85"/>
-        <path d="M60,340 C 140,300 180,380 260,345 C 330,315 340,260 420,290" stroke="var(--mustard)" stroke-width="8" opacity="0.8"/>
-        <path d="M900,300 C 970,270 1010,340 1080,310 C 1120,295 1130,260 1160,270" stroke="var(--mustard)" stroke-width="8" opacity="0.8"/>
-      </g>
-      <g>
-        <circle cx="110" cy="120" r="17" fill="var(--signal)"/><circle cx="110" cy="120" r="9" fill="var(--clay)"/>
-        <circle cx="1070" cy="110" r="15" fill="var(--mustard)"/><circle cx="1070" cy="110" r="7" fill="var(--paper)" opacity="0.7"/>
-        <circle cx="1080" cy="535" r="16" fill="var(--sage)"/><circle cx="1080" cy="535" r="8" fill="var(--paper)" opacity="0.7"/>
-        <circle cx="140" cy="560" r="15" fill="var(--signal)"/><circle cx="140" cy="560" r="7" fill="var(--mustard)"/>
-      </g>
-      <g transform="translate(870,235)">
-        <circle cx="0" cy="0" r="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
-        <circle cx="-14" cy="-4" r="7" fill="var(--ink)"/><circle cx="14" cy="-4" r="7" fill="var(--ink)"/>
-        <circle cx="-14" cy="-6" r="2.4" fill="var(--paper)"/><circle cx="14" cy="-6" r="2.4" fill="var(--paper)"/>
-        <path d="M-10,16 Q0,24 10,16" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M-46,-6 Q-58,-20 -46,-32" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M46,-6 Q58,-20 46,-32" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>
-      </g>
-      <g transform="translate(950,470)">
-        <rect x="-26" y="-18" width="52" height="46" rx="18" fill="var(--signal)"/>
-        <circle cx="-9" cy="-2" r="6" fill="var(--ink)"/><circle cx="9" cy="-2" r="6" fill="var(--ink)"/>
-        <circle cx="-9" cy="-4" r="2" fill="var(--paper)"/><circle cx="9" cy="-4" r="2" fill="var(--paper)"/>
-        <rect x="-30" y="24" width="60" height="20" rx="8" fill="var(--mustard)"/>
-      </g>
-      <g fill="var(--mustard)"><path d="M330,205 l6,16 l16,6 l-16,6 l-6,16 l-6,-16 l-16,-6 l16,-6 z" opacity="0.9"/></g>
-      <g fill="var(--clay)"><path d="M600,230 l5,13 l13,5 l-13,5 l-5,13 l-5,-13 l-13,-5 l13,-5 z" opacity="0.9"/></g>
-      <g fill="var(--sage)"><path d="M770,400 l4,11 l11,4 l-11,4 l-4,11 l-4,-11 l-11,-4 l11,-4 z" opacity="0.85"/></g>
-      <g fill="var(--signal)"><path d="M200,430 l5,13 l13,5 l-13,5 l-5,13 l-5,-13 l-13,-5 l13,-5 z" opacity="0.9"/></g>
-      <defs>
-        <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="2" seed="4" result="noise"/>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
-      </defs>
-      <text x="590" y="325" text-anchor="middle" filter="url(#rough)" font-family="'Alfa Slab One', serif" font-size="150" fill="var(--paper)" stroke="var(--ink)" stroke-width="2">SOFÍA</text>
-      <text x="590" y="495" text-anchor="middle" filter="url(#rough)" font-family="'Alfa Slab One', serif" font-size="122" fill="var(--paper)" stroke="var(--ink)" stroke-width="2">FRANCO</text>
-    </svg>
+    <!-- EDITA AQUÍ: imagen de portada (recomendado 1800 x 946 px) -->
+    <img src="portada.png" alt="Sofía Franco — portafolio">
   </div>
   <div class="tagline i18n" data-en="portfolio · 2026">portafolio · 2026</div>
 </div>
@@ -327,18 +289,18 @@
   <!-- EDITA AQUÍ: cada proyecto técnico es un enlace a su sección en proyectos-detalle.html (id="proyecto-N") -->
       <!-- Digitalización de Huaca Huantille -->
   <a class="paper tech" href="proyectos-detalle.html#proyecto-1">
-    <div class="year">2025</div>
+    <div class="year">2026</div>
     <div>
       <h3 class="i18n" data-en="Digital Documentation and 3D Reconstruction of Huaca Huantille">
         Digitalización y reconstrucción 3D de la Huaca Huantille
       </h3>
-      <p class="i18n" data-en="This project aimed to contribute to the preservation and accessibility of cultural heritage through the 3D digitization of Huaca Huantille and artifacts from the Ichma culture. Drone-based photogrammetry and handheld 3D scanning were used to process, reconstruct, and 3D print the models, enabling visually impaired individuals to physically interact with replicas of the artifacts.">
-        Este proyecto buscó contribuir a la conservación y accesibilidad del patrimonio cultural mediante la digitalización 3D de la Huaca Huantille y piezas de la cultura Ichma. Se empleó fotogrametría con dron y escaneo 3D manual para procesar, reconstruir e imprimir los modelos, permitiendo que personas con discapacidad visual pudieran interactuar físicamente con réplicas de los objetos.
+      <p class="i18n" data-en="A project to support the preservation and accessibility of cultural heritage through the 3D digitization of Huaca Huantille and Ichma ceramic pieces. Handheld 3D scanning and drone photogrammetry were combined to reconstruct and 3D print replicas, allowing members of the Braille Perú community to touch, for the first time, pieces that are normally displayed behind glass.">
+        Proyecto de conservación y accesibilidad del patrimonio cultural mediante la digitalización 3D de la Huaca Huantille y de piezas de cerámica de la cultura Ichma. Se combinaron escaneo 3D manual y fotogrametría con dron para reconstruir e imprimir réplicas, que permitieron a miembros de la comunidad Braille Perú tocar por primera vez piezas que normalmente se exhiben detrás de una vitrina.
       </p>
       <span class="venue i18n" data-en="Cultural heritage & 3D digitization">
         Patrimonio cultural y digitalización 3D
       </span>
-      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
     </div>
   </a>
 
@@ -350,37 +312,55 @@
       <h3 class="i18n" data-en="Design and 3D Printing of an Interactive Audio Module for Educational Plush Toys">
         Diseño e impresión 3D de un módulo de audio interactivo para peluche educativo
       </h3>
-      <p class="i18n" data-en="A compact enclosure was designed in Fusion 360 to integrate an electronic system capable of playing jungle animal sounds when a button is pressed. The component is intended to be incorporated into an educational plush toy, creating an interactive tool to introduce children to Peru's biodiversity.">
-        Se diseñó en Fusion 360 una carcasa compacta para integrar un sistema electrónico capaz de reproducir sonidos de animales de la selva al presionar un botón. La pieza será incorporada en un peluche educativo, creando una herramienta interactiva para acercar a los niños a la biodiversidad del Perú.
+      <p class="i18n" data-en="In collaboration with Professor Rutsha Pozzi, I designed a compact enclosure in Fusion 360 to house an electronic system that plays jungle animal sounds at the press of a button. The piece will be incorporated into an educational plush toy, creating an interactive tool to bring children closer to Peru's biodiversity.">
+        En colaboración con la profesora Rutsha Pozzi, diseñé en Fusion 360 una carcasa compacta para integrar un sistema electrónico que reproduce sonidos de animales de la selva al presionar un botón. La pieza será incorporada en un peluche educativo, creando una herramienta interactiva para acercar a los niños a la biodiversidad del Perú.
       </p>
       <span class="venue i18n" data-en="Product design & additive manufacturing">
         Diseño de producto y fabricación aditiva
       </span>
-      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
     </div>
   </a>
 
 
-  <!-- Prótesis mioeléctrica -->
+  <!-- Docencia -->
   <a class="paper tech" href="proyectos-detalle.html#proyecto-3">
+    <div class="year">2025</div>
+    <div>
+      <h3 class="i18n" data-en="Learning by Doing: Teaching Biomechanics and Digital Fabrication">
+        Aprender haciendo: docencia en biomecánica y fabricación digital
+      </h3>
+      <p class="i18n" data-en="I served as a teaching assistant for the Biomechanics course, guiding students through their laboratory work. I have also led several workshops on 3D printing, Fusion 360 design, and digitization technologies, sharing the tools I use in my own projects with new generations of engineers and makers.">
+        Fui jefa de práctica del curso de Biomecánica, acompañando a los estudiantes en su trabajo de laboratorio. Además, he dictado diversos talleres de impresión 3D, diseño en Fusion 360 y tecnologías de digitalización, compartiendo con nuevas generaciones de ingenieros y creadores las herramientas que uso en mis propios proyectos.
+      </p>
+      <span class="venue i18n" data-en="University teaching & workshops">
+        Docencia universitaria y talleres
+      </span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
+    </div>
+  </a>
+
+  <!-- Prótesis mioeléctrica -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-4">
     <div class="year">2024</div>
     <div>
       <h3 class="i18n" data-en="Assembly and Testing of 3D-Printed Transradial Myoelectric Prostheses">
         Ensamblaje y pruebas de prótesis transradiales mioeléctricas impresas en 3D
       </h3>
-      <p class="i18n" data-en="This project involved supporting the assembly and evaluation of 3D-printed transradial myoelectric prostheses. Tasks included component preparation, device assembly, and assistance during user testing to evaluate the prostheses' functionality and fit.">
-        Se brindó apoyo en el ensamblaje y evaluación de prótesis transradiales mioeléctricas fabricadas mediante impresión 3D. Las actividades incluyeron la preparación de componentes, ensamblaje del dispositivo y apoyo durante las pruebas con usuarios para evaluar su funcionamiento y ajuste.
+      <p class="i18n" data-en="In collaboration with Professor Enzo Romero, I supported the assembly and evaluation of 3D-printed transradial myoelectric prostheses, from component preparation and device assembly to user testing to evaluate their functionality and fit. This work led to a paper published in IEEE Xplore.">
+        En colaboración con el profesor Enzo Romero, brindé apoyo en el ensamblaje y la evaluación de prótesis transradiales mioeléctricas impresas en 3D, desde la preparación de componentes y el ensamblaje de los dispositivos hasta las pruebas con usuarios para evaluar su funcionamiento y ajuste. Este trabajo dio lugar a un paper publicado en IEEE Xplore.
       </p>
+      <span class="link">https://ieeexplore.ieee.org/document/11114954</span>
       <span class="venue i18n" data-en="Myoelectric prosthetics">
         Prótesis mioeléctricas
       </span>
-      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
     </div>
   </a>
 
 
   <!-- Segmentación de tomografías -->
-  <a class="paper tech" href="proyectos-detalle.html#proyecto-4">
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-5">
     <div class="year">2024</div>
     <div>
       <h3 class="i18n" data-en="3D Segmentation of Computed Tomography Images for Surgical Planning">
@@ -392,13 +372,13 @@
       <span class="venue i18n" data-en="Medical imaging & 3D modeling">
         Imágenes médicas y modelado 3D
       </span>
-      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
     </div>
   </a>
 
 
   <!-- Bomba de infusión -->
-  <a class="paper tech" href="proyectos-detalle.html#proyecto-5">
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-6">
     <div class="year">2024</div>
     <div>
       <h3 class="i18n" data-en="Design and Prototyping of a Syringe Infusion Pump Enclosure">
@@ -410,13 +390,13 @@
       <span class="venue i18n" data-en="Medical device design & prototyping">
         Diseño y prototipado de dispositivos médicos
       </span>
-      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
     </div>
   </a>
 
 
   <!-- Protocolos de impresión 3D -->
-  <a class="paper tech" href="proyectos-detalle.html#proyecto-6">
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-7">
     <div class="year">2023–2024</div>
     <div>
       <h3 class="i18n" data-en="Development of 3D Printing Protocols for Dental Models">
@@ -428,7 +408,26 @@
       <span class="venue i18n" data-en="Dental 3D printing & manufacturing">
         Impresión 3D y fabricación de modelos dentales
       </span>
-      <span class="more i18n" data-en="View project →">Ver proyecto →</span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
+    </div>
+  </a>
+
+
+  <!-- Patrimonio arquitectónico de Lima (FabCore PUCP + PROLIMA) -->
+  <a class="paper tech" href="proyectos-detalle.html#proyecto-8">
+    <!-- EDITA AQUÍ: escribe el año del proyecto -->
+    <div class="year">—</div>
+    <div>
+      <h3 class="i18n" data-en="3D Digitization and Printing of Historic Architectural Elements of Lima">
+        Digitalización e impresión 3D de elementos arquitectónicos históricos de Lima
+      </h3>
+      <p class="i18n" data-en="A collaboration between FabCore PUCP and PROLIMA to document and share the architectural heritage of Lima's Historic Center. We digitized architectural details of historic buildings with handheld 3D scanning and 3D printed physical replicas. I also helped fabricate scale models of the city's three previous arches and the proposed new Arch of Lima for an exhibition.">
+        Colaboración entre FabCore PUCP y PROLIMA para documentar y difundir el patrimonio arquitectónico del Centro Histórico de Lima. Digitalizamos con escaneo 3D de mano detalles arquitectónicos de edificios históricos y fabricamos réplicas físicas mediante impresión 3D. Además, participé en la fabricación de modelos a escala de los tres arcos anteriores de la ciudad y de la propuesta del nuevo Arco de Lima para una exposición.
+      </p>
+      <span class="venue i18n" data-en="Architectural heritage & 3D fabrication">
+        Patrimonio arquitectónico y fabricación 3D
+      </span>
+      <span class="more i18n" data-en="See more →">Ver más →</span>
     </div>
   </a>
     </div>
